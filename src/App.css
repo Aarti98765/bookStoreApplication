@@ -1,0 +1,278 @@
+.App {
+  text-align: start;
+}
+
+body {
+  background-color: white;
+}
+
+.container {
+    width: 1000px;
+    margin: 20px auto;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.hide {
+    display: none;
+}
+
+.icon_cart {
+   width : 30px;
+   height: 25px;
+}
+
+.menu {
+    background-color: brown;
+    width: 1000px;
+    height: 63px;
+    display: flex;
+    padding: 0 40px;
+    position: relative;
+}
+
+.menu__right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.font-size {
+  font-size: 12px;
+  margin-left: 3px;
+  margin-bottom: 0px;
+  color: white;
+  font-style: inherit;
+  margin-top: 3px;
+}
+
+.font-cart {
+  font-size: 10px;
+  margin-left: 150px;
+  margin-right: 5px;
+  margin-top: 5px;
+  color: white;
+}
+
+.menu__logo_first {
+  text-indent: -9999999px;
+  display: inline-block;
+  height: 50%;
+  width: 42px;
+  margin-top: 12px;
+  margin-left: 90px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.menu__cart_logo {
+    height: 70%;
+    width: 42px;
+    border: 1px solid #c8c9ce;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    margin-top: 25%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.menu__search-form {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding: 10px;
+  background-color: white;
+}
+
+.menu__search-input {
+  outline: none;
+  border: 1px solid #c8c9ce;
+  font-size: 18px;
+  padding: 5px;
+  font-weight: 300;
+}
+
+.button_size {
+  margin-top: 10px;
+  width: 40px;
+  height: 30px;
+}
+
+.heading_style {
+  margin-right: 515px;
+  margin-left: 38px;
+  font-size: 15px;
+}
+
+.border {
+  border:'1px solid red'
+}
+
+.flex-container-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-container-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.image_style {
+  margin-top: 5px;
+  margin-left: 45px;
+  width: 60px;
+  height: 100px;
+}
+
+.heading-style-first {
+  margin-left: 6px;
+  margin-top: 5px;
+  font-size: 15px;
+}
+
+.heading-style-second {
+  margin-top: 0px;
+  margin-right: 100px;
+  margin-left: 30px;
+}
+
+.heading-style-third {
+  margin-top: 0px;
+  margin-right: 100px;
+  margin-left: 25px;
+  font-size: 15px;
+}
+
+.btn-style-remove {
+  margin-left: 20px;
+  background-color: white;
+  border: black;
+}
+
+.btn-style-count {
+  margin-left: 135px;
+}
+
+.btn-style-count1 {
+  background-color: maroon;
+  color: white;
+}
+
+.btn-style-placeorder {
+  margin-left: 480px;
+  background-color: midnightblue;
+  color: white;
+  margin-bottom: 10px;
+}
+
+.btn-style-custom {
+  margin-top: 0px;
+  margin-right: 500px;
+  margin-bottom: 5px;
+  margin-left: 29px;
+  background-color: white;
+  border: black;
+}
+
+.btn-style-summary {
+  margin-right: 507px;
+  margin-top: 0px;
+  margin-left: 29px;
+  background-color: white;
+  border: black;
+  margin-bottom: 5px;
+}
+
+form {
+  border: 1px solid red;
+  padding: 2rem;
+  margin: 2rem;
+  display: flex;
+  margin-left: 130px;
+  margin-right: 130px;
+} 
+ 
+.formtext {
+  position: relative;
+  top: -48px;
+  background: white;
+  padding: 7px;
+  width: 57px;
+  color: red;
+}
+.style-number-text {
+  margin-left: 10px;
+}
+
+.style-address-text {
+  margin-right: 13px;
+  margin-left: 85px;
+  margin-top: 5px;
+  width: 353px;
+}
+
+.style-pincode-text {
+  margin-left: 74px;
+  margin-top: 5px;
+}
+
+.style-type-text {
+  margin-bottom: 10px;
+}
+
+.radio {
+  margin-top: 5px;
+}
+
+.cart ion-icon {
+  vertical-align: bottom;
+  font-size: 20px;
+  padding-left: 10px;
+  margin-top: 30px;
+}
+
+nav li {
+  list-style: none;
+  display: inline-block;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-top: 5px;
+}
+
+li a {
+  padding: 5px;
+  text-decoration: none;
+  margin-left: 10px;
+}
+
+.container {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+  margin-top: 50px;
+  padding-bottom: 100px;
+  margin-left: 115px;
+}
+
+.image {
+  margin-right: 20px;
+  margin-left: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.img {
+  width: 90px;
+  height: 120px;
+  margin-left: 4px;
+}
+
+.addToCart {
+  background-color: brown;
+  color: white;
+}
