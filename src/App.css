@@ -103,8 +103,8 @@ body {
 }
 
 .heading_style {
-  margin-right: 515px;
-  margin-left: 20px;
+  margin-right: 520px;
+  margin-left: 40px;
   font-size: 15px;
 }
 
@@ -124,13 +124,13 @@ body {
 
 .image_style {
   margin-top: 5px;
-  margin-left: 45px;
-  width: 60px;
+  margin-left: 35px;
+  width: 70px;
   height: 100px;
 }
 
 .heading-style-first {
-  margin-left: 6px;
+  margin-left: 31px;
   margin-top: 5px;
   font-size: 15px;
 }
@@ -138,36 +138,55 @@ body {
 .heading-style-second {
   margin-top: 0px;
   margin-right: 100px;
-  margin-left: 30px;
+  margin-left: 32px;
 }
 
 .heading-style-third {
   margin-top: 0px;
   margin-right: 100px;
-  margin-left: 25px;
+  margin-left: 32px;
   font-size: 15px;
 }
 
 .btn-style-remove {
   margin-left: 20px;
-  background-color: white;
-  border: black;
-}
-
-.btn-style-count {
-  margin-left: 135px;
+  background-color: brown;
+  border: white;
+  color: white;
+  margin-bottom: 10px;
 }
 
 .btn-style-count1 {
-  background-color: maroon;
+  margin-left: 130px;
+  margin-bottom: 10px;
+  border: white;
+  background-color: white;
+  color: brown;
+}
+
+.btn-style-count2 {
+  background-color: brown;
+  border: white;
   color: white;
+  margin-bottom: 10px;
+}
+
+.btn-style-count3 {
+  border: white;
+  background-color: white;
+  margin-bottom: 10px;
+  color: brown;
 }
 
 .btn-style-placeorder {
   margin-left: 480px;
-  background-color: midnightblue;
+  /*background-color: midnightblue;
+  color: white; */
+  background-color: brown;
+  border: white;
   color: white;
   margin-bottom: 10px;
+  margin-top: 10px;
 }
 
 .btn-style-custom {
@@ -261,7 +280,7 @@ li a {
 
 .image {
   margin-right: 20px;
-  margin-left: 20px;
+  margin-left: 0px;
   position: relative;
   overflow: hidden;
 }
@@ -269,17 +288,17 @@ li a {
 .img {
   width: 90px;
   height: 120px;
-  margin-left: 4px;
+  margin-left: 0px;
 }
 
 .addToCart {
   background-color: brown;
   margin-right:3px;
   color: white;
+  border: white;
 }
+
 .addToWish {
-  
-  background-color: white;
-  color: black
-  ;
+  background-color:white;
+  color:black;
 }

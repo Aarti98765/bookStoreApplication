@@ -18,7 +18,7 @@ function WishList({ WishListProps }) {
         return (
             <Fragment>
                 <div className="flex-container-column">
-                    <div style={{ border: '1px solid red', marginLeft: '130px', marginRight: '130px' }}>
+                    <div style={{ border: '1px solid red', marginLeft: '130px', marginRight: '130px', marginTop:'10px' }}>
                         <div>
                             <h4 className="heading_style"> My WishList</h4>
                         </div>
@@ -27,16 +27,21 @@ function WishList({ WishListProps }) {
                             <div>
                                 <h4 className="heading-style-first">{books.name}</h4>
                                 <h6 className="heading-style-second">{books.author}</h6>
-                                <h4 className="heading-style-third">{books.price}</h4>
+                                <span></span>
+                                <div>
+                                <h4 className="heading-style-third">Rs.{books.price}</h4>
+                                <button className="btn-style-remove">Remove</button>
+                                </div>
                             </div>
                         </div>
-                            <div>
+                    </div>
+                    {/*
                                 <button className="btn-style-remove">Remove</button>
                             </div>
                         </div>
-                        <div>
+                       {/* <div>
                             <button className="btn-style-placeorder" onClick={() => this.props.addBasket()}>PLACE ORDER</button>
-                        </div>
+                       </div>  */}
                     </div>   
             </Fragment>
         )

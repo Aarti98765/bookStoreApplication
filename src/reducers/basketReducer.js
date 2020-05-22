@@ -1,6 +1,5 @@
 import { ADD_PRODUCT_BASKET, GET_NUMBERS_BASKET, initialState } from "../actions/types";
 
-
 export default (state = initialState, action) => {
     switch(action.type) {
         case ADD_PRODUCT_BASKET:

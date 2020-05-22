@@ -9,6 +9,7 @@
     "axios": "^0.19.2",
     "css-loader": "^3.5.3",
     "react": "^16.13.1",
+    "react-data-table-component": "^6.9.1",
     "react-dom": "^16.13.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.2.0",
@@ -16,6 +17,7 @@
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-thunk": "^2.3.0",
+    "styled-components": "^5.1.0",
     "use-axios-react": "^0.2.3"
   },
   "scripts": {
