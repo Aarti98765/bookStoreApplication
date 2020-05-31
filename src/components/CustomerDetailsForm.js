@@ -23,34 +23,33 @@ formContinue(event) {
 
 render() {
     return (
-        <form onSubmit={this.formContinue}>
-        <div>
-          <span className="formtext">&#x3C;Form/&#x3E;</span>
+       <form onSubmit={this.formContinue}> 
+        
+          <span></span>
               <input 
                 type="text" 
-                placeholder="Name" 
-                required 
+                placeholder="   Name" 
+                className="style-name-text" 
                 />
                 <input className="style-number-text"
                 type="text" 
-                placeholder="Phone Number" 
-                required 
+                placeholder="    Phone Number"  
                 />
             <div>
                 <span> </span>
     	        <input className="style-pincode-text"
                 type="text" 
-                placeholder="Pincode" 
+                placeholder="    Pincode" 
                 />
                 <input className="style-number-text"
                 type="text" 
-                placeholder="Locality" 
+                placeholder="    Locality" 
                 />
             </div>
             <div>
                 <textarea className="style-address-text"
                 type="text" 
-                placeholder="Address" 
+                placeholder="  Address" 
             />
         </div>
         
@@ -58,17 +57,17 @@ render() {
           <span> </span>
     	  <input className="style-pincode-text"
           type="text" 
-          placeholder="City/Town" 
+          placeholder="    City/Town" 
         />
         <input className="style-number-text"
           type="text" 
-          placeholder="Landmark" 
+          placeholder="    Landmark" 
         />
         </div>
 
         <div className="radio">
          <span></span>
-        <label style={{ marginRight:'50px'}}>
+        <label style={{ marginRight:'50px', marginLeft:'69px' }}>
           <input 
             type="radio"
             value="Home"
@@ -100,16 +99,14 @@ render() {
       
       <div>
           <span></span>
-          <div style={{marginLeft:'120px'}}>
+          <div style={{marginLeft:'120px', marginBottom:'20px' }}>
             Selected option is : {this.state.selectedOption}   
-          <button style={{marginTop:'18px', marginLeft:'33px', width:'100px'}}className="btn btn-default" type="submit">
+          <button style={{marginTop:'18px', marginLeft:'220px', width:'120px', height:'27px', border:'white', color:'white', backgroundColor:'rgb(26, 74, 165)'}} className="btn btn-default" type="submit">
             Continue
           </button>
           </div>
       </div>
-     
       </div> 
-     </div>
      </form>
      );
   }

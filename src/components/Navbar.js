@@ -26,7 +26,6 @@ function Navbar(props) {
                     placeholder="Search..."></input>
             </div>     
             <ul>
-
                 <li><Link to="/" style={{marginLeft:'100px', color:'white'}}>Home</Link></li>
                 <li><label style={{marginLeft:'15px', color:'white'}}>Cart</label>
                 <Link to="/Cart" style={{backgroundColor:'white', color:'brown'}}>

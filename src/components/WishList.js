@@ -35,13 +35,6 @@ function WishList({ WishListProps }) {
                             </div>
                         </div>
                     </div>
-                    {/*
-                                <button className="btn-style-remove">Remove</button>
-                            </div>
-                        </div>
-                       {/* <div>
-                            <button className="btn-style-placeorder" onClick={() => this.props.addBasket()}>PLACE ORDER</button>
-                       </div>  */}
                     </div>   
             </Fragment>
         )
