@@ -369,3 +369,27 @@ li a {
   cursor: pointer;
   margin-left: 370px;
 }
+
+.flex-container-row-books {
+  display: flex;
+  flex-direction: row;
+  margin-left: 138px;
+  margin-top: 40px;
+}
+
+.flex-container-sort {
+  display: flex;
+  flex-direction: row;
+}
+
+.select-list {
+  height: 24px;
+  margin-top: 25px;
+  margin-left: 420px;
+  width: 150px;
+  background-color: white;
+}
+
+.title-book {
+  margin-left: 138px;
+}

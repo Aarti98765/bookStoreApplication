@@ -1,4 +1,5 @@
-import { ADD_PRODUCT_BASKET, GET_NUMBERS_BASKET, initialState } from "../actions/types";
+import { ADD_PRODUCT_BASKET, GET_NUMBERS_BASKET } from "../actions/types";
+import { initialState } from "../components/homeDataLayer";
 
 export default (state = initialState, action) => {
     switch(action.type) {

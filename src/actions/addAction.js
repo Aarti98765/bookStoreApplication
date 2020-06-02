@@ -1,22 +1,22 @@
 import { ADD_PRODUCT_BASKET, ADD_PRODUCT_WISHLIST } from './types';
 
-export const addBasket = (bookName) => {
+export const addBasket = (bookId) => {
     return (dispatch) => {
         console.log("Adding to basket");
-        console.log("Books: ", bookName);
+        console.log("Books: ", bookId);
         dispatch({
             type: ADD_PRODUCT_BASKET,
-            payload: bookName
+            payload: bookId
         });
     }
 }
-export const addWishList = (bookName) => {
+export const addWishList = (bookId) => {
     return (dispatch) => {
         console.log("Adding to WishList");
-        console.log("Books: ", bookName);
+        console.log("Books: ", bookId);
         dispatch({
             type: ADD_PRODUCT_WISHLIST,
-            payload: bookName
+            payload: bookId
         });
     }
 }

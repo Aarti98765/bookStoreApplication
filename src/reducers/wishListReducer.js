@@ -1,4 +1,5 @@
-import { ADD_PRODUCT_WISHLIST, GET_NUMBERS_WISHLIST, initialState } from "../actions/types";
+import { ADD_PRODUCT_WISHLIST, GET_NUMBERS_WISHLIST } from "../actions/types";
+import { initialState } from "../components/homeDataLayer";
 
 export default (state = initialState, action) => {
     switch(action.type) {
