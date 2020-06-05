@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 function Navbar(props) {
     console.log(props);
-
     useEffect(() => {
         getNumbers();
     }, [])
@@ -19,14 +18,14 @@ function Navbar(props) {
                 width:'30px', height:'30px', marginLeft:'37px'}}></ion-icon> 
          
             <div className="font-size">
-                <h1>Bookstore</h1>
+            <Link to="/" style={{color:'brown'}}><h1 style={{ color:'white' }} >Bookstore</h1></Link>
             </div>   
             <div>
                 <input style={{marginTop:'18px', marginLeft:'20px', width:'260px', height:'20px'}} 
                     placeholder="Search..."></input>
             </div>     
             <ul>
-                <li><Link to="/" style={{marginLeft:'100px', color:'white'}}>Home</Link></li>
+                <li><Link to="/Home" style={{marginLeft:'100px', color:'white'}}>Home</Link></li>
                 <li><label style={{marginLeft:'15px', color:'white'}}>Cart</label>
                 <Link to="/Cart" style={{backgroundColor:'white', color:'brown'}}>
                     <ion-icon name="cart-outline" ></ion-icon><span>{props.basketProps.basketNumbers}</span></Link></li>

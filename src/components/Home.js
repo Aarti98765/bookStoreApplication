@@ -20,8 +20,8 @@ function Home({ basketProps, addBasket, addWishList}) {
                     <h5>{books.name}</h5>
                     <h6>{books.author}</h6>
                     <h5>Rs. {books.price}</h5>
-                    <button onClick={()=> addBasket('1')} className="addToCart">Add to cart</button>
-                    <button onClick={() => addWishList('1')} className="addToWish">WishList</button>
+                    <button onClick={()=> addBasket(books.id)} className="addToCart">Add to cart</button>
+                    <button onClick={() => addWishList(books.id)} className="addToWish">WishList</button>
                 </div>
             </div>
         );

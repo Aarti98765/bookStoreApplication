@@ -1,11 +1,11 @@
 import React from 'react'; 
-import Home from '../components/Home';
+import Home from './Home';
 
 export const initialState = {
     basketNumbers: 0,
     cartCost: 0,
     books: {
-        1: {
+        1: {id: 1,
             name: "The Girl in Room 105",
             author: "Chetan Bhagat",
             url: 'https://books.google.com/books/content?id=GHt_uwEACAAJ&printsec=frontcover&img=1&zoom=5',
@@ -15,6 +15,7 @@ export const initialState = {
             inCart: false,
         },
         2: {
+            id: 2,
             name: "Indian Superfoods",
             author: "by Rujuta Divekar",
             url: 'https://books.google.com/books/content?id=4oFoDwAAQBAJ&printsec=frontcover&img=1&zoom=5',
@@ -23,7 +24,7 @@ export const initialState = {
             inwish: false,
             inCart: false,
         },
-        3: {
+        3: {id: 3,
             name: "Angels And Demons",
             author: "by Dan Brown",
             url: 'https://books.google.com/books/content?id=d5xgYw4Ts0gC&printsec=frontcover&img=1&zoom=5',
@@ -33,7 +34,7 @@ export const initialState = {
             inCart: false,
 
         },
-        4: {
+        4: {id: 4, 
             name: "Angels & Demons Tie-In",
             author: "by Dan Brown",
             url: 'https://books.google.com/books/content?id=GXznEnKwTdAC&printsec=frontcover&img=1&zoom=5',

@@ -6,22 +6,20 @@ class OrderConfirm extends Component {
       super(props) 
       this.state = { 
          students: [
-            { id: 1, name: 'Wasif', age: 21, email: 'wasif@email.com' },
-            { id: 2, name: 'Ali', age: 19, email: 'ali@email.com' },
-            { id: 3, name: 'Saad', age: 16, email: 'saad@email.com' },
-            { id: 4, name: 'Asad', age: 25, email: 'asad@email.com' }
+            { id: 1, email: 'admin@bookstore.com', contact: '9565880122', address:'Malhotra Chambers, First Floor, Govandi East, Mumbai, Maharashtra 400088'},
+            { id: 2, email: 'bookstore@orgadm.com', contact: '7755882200', address: 'Malhotra Chambers, First Floor, Govandi East, Mumbai, Maharashtra 400088'}
          ]
       }
    }
    renderTableData() {
     return this.state.students.map((student, index) => {
-       const { id, name, age, email } = student //destructuring
+       const { id, email, contact, address } = student //destructuring
        return (
           <tr key={id}>
              <td>{id}</td>
-             <td>{name}</td>
-             <td>{age}</td>
              <td>{email}</td>
+             <td>{contact}</td>
+             <td>{address}</td>
           </tr>
        )
     })
