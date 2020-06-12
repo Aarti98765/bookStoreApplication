@@ -4,12 +4,14 @@ import { connect } from 'react-redux';
 function WishList({ WishListProps }) {
     console.log( WishListProps);
     let booksInWishList= [];
+    let counter = 0;
 
     Object.keys( WishListProps.books).forEach(function (item) {
             console.log(item);
         console.log( WishListProps.books[item].inwish);
         if ( WishListProps.books[item].inwish) {
             booksInWishList.push( WishListProps.books[item])
+            counter = counter + 1;
         }
         console.log(booksInWishList);
     })
@@ -35,19 +37,13 @@ function WishList({ WishListProps }) {
                             </div>
                         </div>
                     </div>
-                    {/*
-                                <button className="btn-style-remove">Remove</button>
-                            </div>
-                        </div>
-                       {/* <div>
-                            <button className="btn-style-placeorder" onClick={() => this.props.addBasket()}>PLACE ORDER</button>
-                       </div>  */}
                     </div>   
             </Fragment>
         )
     })
     
     return (
+        counter === 0? <h2 style={{ marginLeft:'300px', marginTop:'100px' }}>"Oops!  You'r wishlist is empty."</h2> :
         <div>
             {booksInWishList}
         </div>
