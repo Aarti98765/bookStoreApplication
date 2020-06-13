@@ -22,10 +22,10 @@ function Navbar(props) {
                 <li><Link to="/Home" style={{marginLeft:'100px', color:'white'}}>Home</Link></li>
                 <li><label style={{marginLeft:'15px', color:'white'}}>Cart</label>
                 <Link to="/Cart" style={{backgroundColor:'white', color:'brown'}}>
-                    <ion-icon name="cart-outline" ></ion-icon><span>{}</span></Link></li>
+                    <ion-icon name="cart-outline" ></ion-icon><span>{0}</span></Link></li>
                 <li><Link to="/WishList"style={{backgroundColor:'white', color:'brown'}}  >
                     <ion-icon name="list-circle-outline"></ion-icon>
-                    <span>{}</span></Link></li>
+                    <span>{0}</span></Link></li>
             </ul>      
         </nav>
         </div>  

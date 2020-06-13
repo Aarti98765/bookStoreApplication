@@ -16,11 +16,6 @@ class Home extends React.Component {
         this.setIsHide = this.setIsHide.bind(this);
     }
 
-    handlePageChange(pageNumber) {
-        console.log(`active page is ${pageNumber}`);
-        this.setState({activePage: pageNumber});
-    }
-
     setIsShown(event) {
         this.setState({
           isShown : true
@@ -33,13 +28,23 @@ class Home extends React.Component {
         });
     }
     
-    async componentDidMount() {
+     async componentDidMount() {
         await data.fetchAllBook(response => {
             this.setState({
                 books: response
             })
         })
     }
+
+    handleClickAddToCart = (e) => {
+        data.addToCart(101, e, 1)
+        console.log("hi aarti", e)
+    }
+
+    handleClickAddToWishList = (e) => {
+        data.addToWishlist(101, e)
+        console.log("aarti", e)
+    } 
 
     render() {
         let { books } = this.state
@@ -48,14 +53,13 @@ class Home extends React.Component {
                 <Sort />
                 <div className="all-books-view" >
                     { books.map(book => (
-                        <div className="single-book-view" >
+                        <div className="single-book-view" key={book.id} >
                             <div className="image-outer-view" >
                             <img className="image-view" src={book.picPath} alt="" onMouseEnter = { this.setIsShown}
                             onMouseLeave={this.setIsHide} />
                             </div>
                             <br></br>
-                        { /* 
-                                isShown && (
+                        { this.state.isShown && (
                                 book.nameOfBook === 'The Girl in Room 105' ? <div>
                                     I'll appear when you hover over the first image.
                             </div> :
@@ -66,16 +70,15 @@ class Home extends React.Component {
                                             I'll appear when you hover over the third image.
                             </div> :
                                         <div>
-                                                I'll appear when you hover over the fourth image.
                             </div>
-                                ) */ }
+                                )  }
                             <div style={{ marginLeft: '18px' }}>
                             <text className="book-name-view" >{book.nameOfBook}</text><br></br>
                             <text className="book-author-view" >{book.author}</text><br></br>
                             <text className="book-price-view" >Rs. {book.price}</text><br></br>
                             </div>
-                            <button className="addToCart" >ADD TO BAG</button>
-                            <button className="addToWishList" >WISHLIST</button>     
+                            <button className="addToCart" onClick={() => this.handleClickAddToCart(book.id)}>ADD TO BAG</button>
+                            <button className="addToWishList" onClick={() => this.handleClickAddToWishList(book.id)} >WISHLIST</button>     
                         </div>
                     ))}
                 </div>

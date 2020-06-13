@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import image from '../images/success1.png';
+import Home from '../components/Home';
 
 class OrderConfirm extends Component {
    constructor(props) {
@@ -11,6 +12,11 @@ class OrderConfirm extends Component {
          ]
       }
    }
+
+   handleClick = () => {
+       this.props.history.push('/Home')
+   }
+
    renderTableData() {
     return this.state.students.map((student, index) => {
        const { id, email, contact, address } = student //destructuring
@@ -51,7 +57,7 @@ class OrderConfirm extends Component {
              </tbody>
           </table>
           <br></br>
-          <button className="button12">Continue Shopping</button>
+          <button className="button12" onClick={this.handleClick}>Continue Shopping</button>
          <br></br>  <br></br>  <br></br>
        </div>
        </div>

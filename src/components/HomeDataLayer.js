@@ -1,23 +1,43 @@
-var booksObject = '';
-var books = '';
 class HomeDataLayer {
+    
     fetchAllBook(callback) {
-       fetch('http://localhost:8082/verifyaccount/all')
+       fetch('http://localhost:8080/verifyaccount/all')
        .then(res => res.json())
-       .then(values => { 
-           booksObject = values;
-           callback(values);
-        })
-        console.log('heyyyyyy', booksObject);
+       .then(values => callback(values))
     }
 
-    initialStates() {
-        const initialState = {
-            basketNumbers: 0,
-            cartCost: 0,
-            books : booksObject 
-        }
-        return initialState
+    addToCart(userId, bookId, quantity) {
+        fetch("http://localhost:8080/home/user/cart/add-update", {
+        method: 'PUT',
+        headers: {
+            "content-type": "Application/json"
+        },
+        body: JSON.stringify({"bookId": bookId, "bookQuantity": quantity, "userId": userId})})
+        .then(res => res.text())
+        .then(res => console.log(res))
+    }
+
+    fetchAllCartBook(callback) {
+        fetch("http://localhost:8080/home/user/cart/getall/101")
+        .then(res => res.json())
+        .then(values => callback(values))
+    }
+
+    addToWishlist(userId, bookId) {
+        fetch("http://localhost:8080/home/user/wishlist/add", {
+        method: 'PUT',
+        headers: {
+            "content-type": "Application/json"
+        },
+        body: JSON.stringify({"bookId": bookId, "userId": userId})})
+        .then(res => res.text())
+        .then(res => console.log(res))
+    }
+
+    fetchAllWishlistBook(callback) {
+        fetch("http://localhost:8080/home/user/wishlist/getall/101")
+        .then(res => res.json())
+        .then(values => callback(values))
     }
 }
 
