@@ -4,7 +4,8 @@ class CustomerDetailsForm extends Component {
   constructor() {
     super();
     this.state = {
-      name: ""
+      name: "",
+      showHideEdit : false
     };
     this.onValueChange = this.onValueChange.bind(this);
     this.formContinue = this.formContinue.bind(this);
@@ -16,6 +17,13 @@ onValueChange(event) {
     });
 }
 
+showEditView = (event) => {
+  event.preventDefault();
+  this.setState ({
+      showHideEdit : !this.state.showHideEdit
+  })
+}
+
 formContinue(event) {
     event.preventDefault();
     console.log(this.state.selectedOption)
@@ -23,8 +31,9 @@ formContinue(event) {
 
 render() {
     return (
+      <div>
+      { this.state.showHideEdit && <button style={{ marginLeft: '540px', backgroundColor:'white', border:'white'}}>Edit</button>}
        <form onSubmit={this.formContinue}> 
-        
           <span></span>
               <input 
                 type="text" 
@@ -101,13 +110,14 @@ render() {
           <span></span>
           <div style={{marginLeft:'120px', marginBottom:'20px' }}>
             Selected option is : {this.state.selectedOption}   
-          <button style={{marginTop:'18px', marginLeft:'220px', width:'120px', height:'27px', border:'white', color:'white', backgroundColor:'rgb(26, 74, 165)'}} className="btn btn-default" type="submit">
+          <button onClick={this.showEditView} style={{marginTop:'18px', marginLeft:'220px', width:'120px', height:'27px', border:'white', color:'white', backgroundColor:'rgb(26, 74, 165)'}} className="btn btn-default" type="submit">
             Continue
           </button>
           </div>
       </div>
       </div> 
      </form>
+     </div>
      );
   }
 }

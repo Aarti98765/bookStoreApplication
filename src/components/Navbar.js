@@ -1,13 +1,32 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import BookDataLayer from './HomeDataLayer';
+import Home from './Home';
 
-function Navbar(props) {
-    console.log(props);
-    return (
-       
+var data = new BookDataLayer();
+
+class Navbar extends Component {
+    constructor() {
+        super()
+        this.state = {
+            books: [],
+            showHome: false
+        }
+    }    
+
+    handleSearchBookView = () => {
+        data.fetchByAuthor(response => {
+            this.setState({
+                showHome: true,
+                books: response
+            })
+        })
+    }   
+
+    render() {
+    return (       
         <div> 
         <nav className="menu">
-            
             <ion-icon name="book-outline" style={{color:'white', marginTop:'15px',
                 width:'30px', height:'30px', marginLeft:'37px'}}></ion-icon> 
          
@@ -15,8 +34,9 @@ function Navbar(props) {
             <Link to="/" style={{color:'brown'}}><h1 style={{ color:'white' }} >Bookstore</h1></Link>
             </div>   
             <div>
-                <input style={{marginTop:'18px', marginLeft:'20px', width:'260px', height:'20px'}} 
+                <input onClick={this.handleSearchBookView} style={{marginTop:'18px', marginLeft:'20px', width:'260px', height:'20px'}} 
                     placeholder="Search..."></input>
+                { this.state.showHome && <Home info={this.state.books} /> }    
             </div>     
             <ul>
                 <li><Link to="/Home" style={{marginLeft:'100px', color:'white'}}>Home</Link></li>
@@ -30,7 +50,7 @@ function Navbar(props) {
         </nav>
         </div>  
        
-    );
+    )}
 }
 
 export default Navbar;

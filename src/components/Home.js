@@ -1,12 +1,11 @@
 import React from 'react'
 import BookDataLayer from './HomeDataLayer';
-import Sort from './Sort';
 
 var data = new BookDataLayer();
 
 class Home extends React.Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             books: [],
             isShown: false,
@@ -46,11 +45,27 @@ class Home extends React.Component {
         console.log("aarti", e)
     } 
 
+    handleChangeBookAsc = () => {
+        data.fetchAllBookAsc(response => {
+            this.setState({
+                books : response.content
+            })
+        })
+    }   
+
     render() {
         let { books } = this.state
         return (
             <div style={{ flexDirection: 'row', marginTop: '30px' }}>
-                <Sort />
+                <div className="flex-container-sort">
+                    <h3 className="title-book">Books <text is="x3d" style={{ fontSize: '13px', opacity: '0.5' }}>({books.length} items)</text></h3>
+                    <select onChange={this.handleChangeBookAsc} className="select-list">
+                        <option>Sort by relevance</option>
+                        <option>Price : High to low</option>
+                        <option>Price : Low to High</option>
+                        <option>Newest Arrivals</option>
+                    </select>
+                </div>
                 <div className="all-books-view" >
                     { books.map(book => (
                         <div className="single-book-view" key={book.id} >

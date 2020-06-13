@@ -27,7 +27,7 @@ class Cart extends Component {
 
      hideSummary = () => {
         this.setState({
-            showHideOrderSummary : !this.state.showHideOrderSummary
+            showHideOrderSummary : !this.state.showHideOrderSummary,
         })
     }
     
@@ -42,15 +42,16 @@ class Cart extends Component {
                 </div>
             </div>
             <CartBookView /> 
-            <div style={{ border: '1px solid red', height: '40px', marginLeft: '130px', marginRight: '130px', marginTop: '0px' }}>
+            <div style={{ border: '1px solid red', height: '40px', marginLeft: '130px', marginRight: '130px', marginTop: '0px' }}>          
                 <button className="btn-style-placeorder" onClick={this.hidePlaceOrderView}>PLACE ORDER</button>
             </div>
 
             <div style={{ border: '1px solid red', marginLeft: '130px', marginRight: '130px', marginTop:'10px' }}>
                 <span></span>
                 <button className="btn-style-custom" >Customer Details</button>
-                <button style={{ marginLeft:'334px', width:'30px', backgroundColor:'white', border:'white' }} >Edit</button>
                 {this.state.showHide && <CustomerDetailsForm />}
+               {/* <button style={{ marginLeft:'334px', width:'30px', backgroundColor:'white', border:'white' }} >Edit</button> 
+                   {this.state.showHide && <CustomerDetailsForm />} */}
             </div>
             <div style={{ border: '1px solid red', marginLeft: '130px', marginRight: '130px', marginTop:'10px' }}>
                 <button className="btn-style-summary" onClick={this.hideSummary}>Order Summary</button>
