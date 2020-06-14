@@ -1,7 +1,7 @@
 import React, { Fragment, Component } from 'react';
-import HomeDataLayer from './HomeDataLayer'
+import BookDataLayer from './BookDataLayer'
 
-var data = new HomeDataLayer();
+var data = new BookDataLayer();
 
 class WishList extends Component {
     constructor() {

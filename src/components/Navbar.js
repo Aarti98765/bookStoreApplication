@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import BookDataLayer from './HomeDataLayer';
+import BookDataLayer from './BookDataLayer';
+import { Badge } from '@material-ui/core';
 import Home from './Home';
 
 var data = new BookDataLayer();
@@ -10,10 +11,27 @@ class Navbar extends Component {
         super()
         this.state = {
             books: [],
+            booksInCart: [],
+            booksInWishList: [],
             showHome: false
         }
     }    
 
+    componentDidMount() {
+        data.fetchAllCartBook(response => {
+            console.log(response)
+            this.setState({
+                booksInCart: response
+            })
+        })
+        data.fetchAllWishlistBook(response => {
+            console.log(response)
+            this.setState({
+                booksInWishList: response
+            })
+        })
+    }
+    
     handleSearchBookView = () => {
         data.fetchByAuthor(response => {
             this.setState({
@@ -24,6 +42,8 @@ class Navbar extends Component {
     }   
 
     render() {
+        let { booksInCart } = this.state
+        let { booksInWishList } = this.state 
     return (       
         <div> 
         <nav className="menu">
@@ -41,11 +61,13 @@ class Navbar extends Component {
             <ul>
                 <li><Link to="/Home" style={{marginLeft:'100px', color:'white'}}>Home</Link></li>
                 <li><label style={{marginLeft:'15px', color:'white'}}>Cart</label>
-                <Link to="/Cart" style={{backgroundColor:'white', color:'brown'}}>
-                    <ion-icon name="cart-outline" ></ion-icon><span>{0}</span></Link></li>
-                <li><Link to="/WishList"style={{backgroundColor:'white', color:'brown'}}  >
+                <Link to="/Cart" style={{backgroundColor:'brown', color:'white', width:'80px', height:'50px' }}> 
+                    <ion-icon name="cart-outline" ></ion-icon><span style={{ marginLeft:'7px' }}><Badge anchorOrigin={{ vertical: 'Top', horizontal: 'right' }} badgeContent={booksInCart.length} color="secondary">
+                    </Badge></span></Link></li>
+                <li><Link to="/WishList" style={{backgroundColor:'brown', color:'white', width:'50px'}}  >
                     <ion-icon name="list-circle-outline"></ion-icon>
-                    <span>{0}</span></Link></li>
+                    <span style={{ marginLeft:'6px' }}><Badge anchorOrigin={{ vertical: 'Top', horizontal: 'right' }} badgeContent={booksInWishList.length} color="secondary">
+                    </Badge></span></Link></li>
             </ul>      
         </nav>
         </div>  

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-//import image from '../images/new.jpg';
+import image from '../images/new.jpg';
 import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import SignUpForm from '../pages/SignUpForm';
 import SignInForm from '../pages/SignInForm';
-import image from '../images/loginImage.jpeg';
+//import image from '../images/loginImage.jpeg';
 
 class Bookstore extends Component {
     render() {

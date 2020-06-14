@@ -1,4 +1,4 @@
-class HomeDataLayer {
+class BookDataLayer {
     
     fetchAllBook(callback) {
        fetch('http://localhost:8080/verifyaccount/all')
@@ -57,6 +57,18 @@ class HomeDataLayer {
         .then(res => res.json())
         .then(values => callback(values))
     }
+
+    removeBookFromWishList(userId, bookId){
+        fetch("http://localhost:8080/home/user/wishlist/remove", {
+        method: 'PUT',
+        headers: {
+            "content-type": "Application/json"
+        },
+        body: JSON.stringify({"bookId": bookId, "userId": userId})})
+        .then(res => res.text())
+        .then(res => console.log(res))
+    }
+
 }
 
-export default HomeDataLayer;
+export default BookDataLayer;

@@ -1,7 +1,7 @@
 import React, {Component } from 'react';
-import HomeDataLayer from './HomeDataLayer';
+import BookDataLayer from './BookDataLayer';
 
-var data = new HomeDataLayer();
+var data = new BookDataLayer();
 
 class OrderSummaryView extends Component {
     constructor() {
