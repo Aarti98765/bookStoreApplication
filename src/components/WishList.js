@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import BookDataLayer from './BookDataLayer'
+import cart from './Cart';
 
 var data = new BookDataLayer();
 
@@ -19,6 +20,18 @@ class WishList extends Component {
                 booksInWishList: response
             })
         })
+    }
+
+    handleRemovebooks = (e) =>{
+        data.removeBookFromWishList(101, e)
+        console.log("aarti", e);
+        window.location.reload(false);
+    }
+
+    handleClickAddToCart = (e) => {
+        data.addToCart(101, e, 1)
+        console.log("hi aarti", e)
+        this.props.history.push('/cart');
     }
 
     render() {
@@ -41,8 +54,9 @@ class WishList extends Component {
                                     <h6 className="heading-style-second">{books.author}</h6>
                                     <span></span>
                                     <div>
-                                    <h4 className="heading-style-third">Rs.{books.price}</h4>
-                                    <button className="btn-remove-wishlist">Remove</button>
+                                    <h4 className="heading-style-third">Rs. {books.price}</h4>
+                                    <button className="btn-remove-wishlist" onClick={() => this.handleRemovebooks(books.id)}>Remove</button>
+                                    <button className="btn-wishlist-to-cart" onClick={() => this.handleClickAddToCart(books.id)}>Add to cart</button>
                                     </div>
                                 </div>
                             </div>

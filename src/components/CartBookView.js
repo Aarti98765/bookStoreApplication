@@ -33,6 +33,12 @@ class CartBookView extends Component {
         })
     }
 
+    handleRemoveBookFromOrder = (e) =>{
+        data.removeBookFromCart(101,e,1)
+        console.log("aarti", e);
+        window.location.reload(false);
+    }   
+
     render() {
        let { booksInCart } = this.state        
     return (
@@ -59,7 +65,7 @@ class CartBookView extends Component {
                                             <button className="btn-style-count3" type="button" onClick={this.setCountIncrement}><ion-icon name="add-circle-outline"></ion-icon></button>
                                         </div>
                                         <div>
-                                            <button className="btn-style-remove">Remove</button>
+                                            <button className="btn-style-remove" onClick={() => this.handleRemoveBookFromOrder(books.id)}>Remove</button>
                                         </div>
                                     </div>
                                 </div>

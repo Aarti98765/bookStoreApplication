@@ -154,10 +154,20 @@ body {
 }
 
 .btn-remove-wishlist {
-  margin-left: 400px;
+  margin-left: 370px;
   background-color: brown;
   border: white;
   color: white;
+  height: 25px;
+  margin-bottom: 10px;
+}
+
+.btn-wishlist-to-cart{
+  margin-left: 10px;
+  background-color: brown;
+  border: white;
+  color: white;
+  height: 25px;
   margin-bottom: 10px;
 }
 

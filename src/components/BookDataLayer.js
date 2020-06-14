@@ -58,6 +58,17 @@ class BookDataLayer {
         .then(values => callback(values))
     }
 
+    removeBookFromCart(userId, bookId, quantity){
+        fetch("http://localhost:8080/home/user/cart/remove", {
+            method: 'PUT',
+            headers: {
+                "content-type": "Application/json"
+            },
+            body: JSON.stringify({"bookId": bookId, "bookQuantity": quantity, "userId": userId})})
+            .then(res => res.text())
+            .then(res => console.log(res))
+    }
+    
     removeBookFromWishList(userId, bookId){
         fetch("http://localhost:8080/home/user/wishlist/remove", {
         method: 'PUT',
