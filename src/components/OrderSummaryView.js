@@ -25,7 +25,7 @@ class OrderSummaryView extends Component {
     render() {
         let { booksOrderSummary } = this.state  
     return (
-        <div> ,
+        <div> 
          { booksOrderSummary.map(books => (
                 <div className="flex-container-column">
                     <div style={{ borderLeft: 'white', borderRight: 'white', borderTop: 'white', marginLeft: '0px', marginRight: '180px', marginTop: '0px' }}>

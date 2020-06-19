@@ -1,39 +1,38 @@
-import React from 'react'
+import React, { Component } from 'react'
 import BookDataLayer from './BookDataLayer';
 
 var data = new BookDataLayer();
 
-class Home extends React.Component {
+class SearchBook extends Component {
     constructor(props) {
         super(props)
         this.state = {
             books: [],
-            isShown: false,
-            activePage: 8,
-            value : 'Sort by relevance'
+            searchBook: ''
         }
-        this.setIsShown = this.setIsShown.bind(this);
-        this.setIsHide = this.setIsHide.bind(this);
     }
 
-    setIsShown(event) {
-        this.setState({
-          isShown : true
-        });
-    }
-
-    setIsHide(event) {
-        this.setState({
-          isShown : false
-        });
-    }
-    
-     async componentDidMount() {
+    async componentDidMount() {
         await data.fetchAllBook(response => {
             this.setState({
                 books: response
             })
         })
+    }
+
+    handleSearchBookView = async (event) => {
+        await this.setState({
+            searchBook: event.target.value
+        }) 
+        
+        if(this.state.searchBook !== '') {
+            data.fetchAllSearchBook(this.state.searchBook, response => {
+                this.setState({
+                    books: response
+                })
+            })
+            console.log('my books', this.state.books);
+        }
     }
 
     handleClickAddToCart = (e) => {
@@ -45,41 +44,13 @@ class Home extends React.Component {
         data.addToWishlist(101, e)
         console.log("aarti", e)
     } 
-
-    handleChangeBookSort = async (event) => {
-        await this.setState ({
-            value : event.target.value
-        })
-        console.log("hello",this.state.value)
-        if("Price : Low to High" === this.state.value){
-            data.fetchAllBookAsc(response => {
-                this.setState({
-                    books : response.content
-                })
-            })
-        }
-        else
-        {   data.fetchAllBookDesc(response => {
-                this.setState({
-                    books : response.content
-                })
-            })
-        }
-       // window.location.reload(true)
-    }   
-
+    
     render() {
         let { books } = this.state
         return (
             <div style={{ flexDirection: 'row', marginTop: '30px' }}>
                 <div className="flex-container-sort">
-                    <h3 className="title-book">Books <text is="x3d" style={{ fontSize: '13px', opacity: '0.5' }}>({books.length} items)</text></h3>
-                    <select onChange={this.handleChangeBookSort} value={this.state.value} className="select-list">
-                        <option>Sort by relevance</option>
-                        <option>Price : High to low</option>
-                        <option>Price : Low to High</option>
-                        <option>Newest Arrivals</option>
-                    </select>
+                    <input className="search-author-view" placeholder="Search book by author..." onChange={(event) => this.handleSearchBookView(event)}></input>
                 </div>
                 <div className="all-books-view" >
                     { books.map(book => (
@@ -89,7 +60,7 @@ class Home extends React.Component {
                             onMouseLeave={this.setIsHide} />
                             </div>
                             <br></br>
-                        { this.state.isShown && (
+                            { this.state.isShown && (
                                 book.nameOfBook === 'The Girl in Room 105' ? <div>
                                     I'll appear when you hover over the first image.
                             </div> :
@@ -101,7 +72,7 @@ class Home extends React.Component {
                             </div> :
                                         <div>
                             </div>
-                                )  }
+                            )}
                             <div style={{ marginLeft: '18px' }}>
                             <text className="book-name-view" >{book.nameOfBook}</text><br></br>
                             <text className="book-author-view" >{book.author}</text><br></br>
@@ -117,4 +88,8 @@ class Home extends React.Component {
     }
 }
 
-export default Home;
+export default SearchBook;
+
+
+
+

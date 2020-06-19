@@ -9,6 +9,7 @@ class CartBookView extends Component {
         this.state = {
         booksInCart : [] ,
         count : 0,
+        books : ''
         }
     }
 
@@ -16,31 +17,53 @@ class CartBookView extends Component {
         data.fetchAllCartBook(response => {
             console.log(response)
             this.setState({
-                booksInCart: response
+                booksInCart : response
             })
         })
     }
 
-    setCountIncrement = () => {
-        this.setState({
-            count  : this.state.count + 1
-        })
+    initialStates = () => {
+        const initialState = {
+            basketNumbers: 0,
+            cartCost: 0,
+            books : this.state.booksInCart 
+        }
+        return initialState
     }
 
-    setCountDecrement = () => {
-        this.setState({
-            count  : this.state.count - 1
+    handleChangeBookDec(e) {
+        let quantity = e.bookQuantity - 1;
+        data.updateCart(101, e.id, quantity)
+        window.location.reload(true)
+        data.fetchAllCartBook(response => {
+            this.setState({
+                booksInCart: response
+            })
         })
+        window.location.reload(true)
     }
 
-    handleRemoveBookFromOrder = (e) =>{
+    handleChangeBookInc(e) {
+        let quantity = e.bookQuantity + 1;
+        data.updateCart(101, e.id, quantity)
+        window.location.reload(true)
+        data.fetchAllCartBook(response => {
+            console.log(response)
+            this.setState({
+                booksInCart: response
+            })
+        })
+        window.location.reload(true)
+    }
+
+    handleRemoveBookFromCart = (e) =>{
         data.removeBookFromCart(101,e,1)
         console.log("aarti", e);
-        window.location.reload(false);
+        window.location.reload(true);
     }   
 
     render() {
-       let { booksInCart } = this.state        
+       let { booksInCart } = this.state  
     return (
             <div>
             { booksInCart.map(books => (
@@ -60,12 +83,12 @@ class CartBookView extends Component {
         
                                     <div className="flex-container-row">
                                         <div className="counter">
-                                            <button className="btn-style-count1" type="button" onClick={this.setCountDecrement}><ion-icon name="remove-circle-outline"></ion-icon></button>
-                                            <button className="btn-style-count2">{this.state.count}</button>
-                                            <button className="btn-style-count3" type="button" onClick={this.setCountIncrement}><ion-icon name="add-circle-outline"></ion-icon></button>
+                                            <button className="btn-style-count1" type="button" onClick={() => this.handleChangeBookDec(books)}><ion-icon name="remove-circle-outline"></ion-icon></button>
+                                            <button className="btn-style-count2">{books.bookQuantity}</button>
+                                            <button className="btn-style-count3" type="button" onClick={() => this.handleChangeBookInc(books)}><ion-icon name="add-circle-outline"></ion-icon></button>
                                         </div>
                                         <div>
-                                            <button className="btn-style-remove" onClick={() => this.handleRemoveBookFromOrder(books.id)}>Remove</button>
+                                            <button className="btn-style-remove" onClick={() => this.handleRemoveBookFromCart(books.id)}>Remove</button>
                                         </div>
                                     </div>
                                 </div>

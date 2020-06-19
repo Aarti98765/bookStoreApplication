@@ -32,6 +32,7 @@ class WishList extends Component {
         data.addToCart(101, e, 1)
         console.log("hi aarti", e)
         this.props.history.push('/cart');
+        data.removeBookFromWishList(101, e)
     }
 
     render() {
