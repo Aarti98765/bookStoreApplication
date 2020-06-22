@@ -282,16 +282,42 @@ li a {
 }
 /*-----------------------Home View----------------------------*/
 
+.flex-container-sort {
+  display: flex;
+  flex-direction: row;
+}
+
+.select-list {
+  height: 24px;
+  margin-top: 15px;
+  margin-left: 432px;
+  width: 150px;
+  background-color: white;
+}
+
+.title-book {
+  margin-left: 93px;
+}
+
+.search-author-view {
+  width: 500px;
+  height: 30px;
+  border-color: brown;
+  border-radius: 20px;
+  margin-left: 200px;
+  margin-bottom: 40px;
+}
+
 .all-books-view {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin-left: 100px;
+  margin-left: 85px;
 }
 
 .single-book-view {
   margin: 10px;
-  height: 240px;
+  height: 234px;
   width: 160px;
   outline-style: groove;
   outline-color: #F8F8F8;
@@ -308,15 +334,25 @@ li a {
 }
 
 .image-view {
-  width: 67px;
+  width: 65px;
   height: 88px;
-  margin-left: 44px ;
+  margin-left: 45px ;
   margin-top: 11px;
 }
 
 .book-name-view {
-  width: 200px;
+  text-overflow: ellipsis;
+  overflow : hidden;
+  white-space: nowrap;
+  width: 145px;
   font-size: 12px;
+  display: inline-block;
+}
+
+.book-name-view:hover {
+  text-overflow: clip;
+  white-space: normal;
+  word-break: break-all;
 }
 
 .book-author-view {
@@ -326,7 +362,7 @@ li a {
 
 .book-price-view {
   margin-left: 2px;
-  font-size: 12px;
+  font-size: 11px;
 }
 
 .addToCart {
@@ -336,7 +372,7 @@ li a {
   color: white;
   width: 73px;
   height: 25px;
-  margin-left: 8px;
+  margin-left: 11px;
   margin-bottom: 15px;
   font-weight: bold;
 }
@@ -344,7 +380,7 @@ li a {
 .addToWishList {
   margin-top: 7px;
   font-size: 9px;
-  width: 63px;
+  width: 60px;
   height: 25px;
   margin-left: 10px;
   font-weight: bold;
@@ -421,27 +457,6 @@ li a {
   margin-left: 370px;
 }
 
-.flex-container-sort {
-  display: flex;
-  flex-direction: row;
-}
-
-.select-list {
-  height: 24px;
-  margin-top: 15px;
-  margin-left: 432px;
-  width: 150px;
-  background-color: white;
-}
-
-.title-book {
-  margin-left: 108px;
-}
-
-.search-author-view {
-  margin-left: 108px;
-}
-
 /*-------------------Registration View------------------*/
 
 .Main_view {
@@ -452,11 +467,10 @@ li a {
 
 .App__Aside {
   width: 50%;
-/*  background-color: #66DAC7; */
 }
 
 .App_Img {
-  height: 370px;
+  height: 409px;
   width: 420px;
   margin-left: 0%;
   margin-top: 0%;
@@ -468,7 +482,6 @@ li a {
   outline-color: #F5F5F5;
   outline-width: 0.1px;
   background-color: 	#fbfcfd ;
-  /*background-color: #2E4158;*/
   padding: 25px 40px;
   overflow: auto;
 }
@@ -515,22 +528,18 @@ li a {
   margin-bottom: 50px;
 }
 
-.FormTitle__Link {
-  color: #707C8B;
-  text-decoration: none;
-  display: inline-block;
+.FormTitle__Link_SignIn {
+  color:brown;
   font-size: 1.7em;
-  margin: 0 10px;
+  margin: 0 5px;
   padding-bottom: 5px;
 }
 
-.FormTitle__Link:first-child {
-  margin-left: 0;
-}
-
-.FormTitle__Link--Active {
-  color: brown;
-  border-bottom: 1px solid #199087;
+.FormTitle__Link_SignUp {
+  color: #707C8B;
+  font-size: 1.7em;
+  margin: 0 7px;
+  padding-bottom: 5px;
 }
 
 .FormField {
@@ -543,6 +552,7 @@ li a {
   font-size: .9em;
   color: brown;
 }
+
 .FormField__Input {
   width: 85%;
   background-color: transparent;
@@ -566,9 +576,11 @@ li a {
   border: none;
   outline: none;
   border-radius: 25px;
-  padding: 15px 70px;
+/*  padding: 15px 70px; */
   font-size: .8em;
   font-weight: 500;
+  width: 150px;
+  height: 43px;
 }
 
 .FormField__Link {
@@ -577,6 +589,7 @@ li a {
   display: inline-block;
   border-bottom: 1.5px solid #225E62;
   padding-bottom: 5px;
+  margin-left: 10px;
 }
 
 .FormField__CheckboxLabel {
@@ -596,5 +609,18 @@ li a {
   display: inline-block;
   padding-bottom: 2px;
   margin-left: 5px;
+}
+
+.FormField_Create_account {
+  background-color: #66707D;;
+  color: white;
+  border: none;
+  outline: none;
+  border-radius: 25px;
+  font-size: .8em;
+  font-weight: 500;
+  width: 150px;
+  height: 43px;
+  margin-left: 30px;
 }
 

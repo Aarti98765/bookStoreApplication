@@ -3,9 +3,10 @@ import image from '../images/new.jpg';
 import { HashRouter as Router, Route, NavLink } from 'react-router-dom';
 import SignUpForm from '../pages/SignUpForm';
 import SignInForm from '../pages/SignInForm';
+import ResetPassword from './ResetPassword';
 //import image from '../images/loginImage.jpeg';
 
-class Bookstore extends Component {
+class LoginRegistration extends Component {
     render() {
         return (
             <Router basename="/react-auth-ui/">
@@ -29,4 +30,4 @@ class Bookstore extends Component {
     }
 }
 
-export default Bookstore
+export default LoginRegistration

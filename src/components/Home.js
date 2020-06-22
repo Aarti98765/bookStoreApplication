@@ -38,12 +38,10 @@ class Home extends React.Component {
 
     handleClickAddToCart = (e) => {
         data.addToCart(101, e, 1)
-        console.log("hi aarti", e)
     }
 
     handleClickAddToWishList = (e) => {
         data.addToWishlist(101, e)
-        console.log("aarti", e)
     } 
 
     handleChangeBookSort = async (event) => {
@@ -86,10 +84,10 @@ class Home extends React.Component {
                         <div className="single-book-view" key={book.id} >
                             <div className="image-outer-view" >
                             <img className="image-view" src={book.picPath} alt="" onMouseEnter = { this.setIsShown}
-                            onMouseLeave={this.setIsHide} />
+                                onMouseLeave={this.setIsHide} />
                             </div>
                             <br></br>
-                        { this.state.isShown && (
+                            { this.state.isShown && (
                                 book.nameOfBook === 'The Girl in Room 105' ? <div>
                                     I'll appear when you hover over the first image.
                             </div> :
@@ -102,7 +100,7 @@ class Home extends React.Component {
                                         <div>
                             </div>
                                 )  }
-                            <div style={{ marginLeft: '18px' }}>
+                            <div style={{ marginLeft: '10px' }}>
                             <text className="book-name-view" >{book.nameOfBook}</text><br></br>
                             <text className="book-author-view" >{book.author}</text><br></br>
                             <text className="book-price-view" >Rs. {book.price}</text><br></br>

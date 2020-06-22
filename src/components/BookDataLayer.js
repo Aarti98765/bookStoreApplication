@@ -1,11 +1,13 @@
+//var booksObject = '';
+//var booksCount = '';
 class BookDataLayer {
     
     fetchAllBook(callback) {
        fetch('http://localhost:8080/verifyaccount/all')
-       .then(res => res.json())
-       .then(values => callback(values))
+        .then(res => res.json())
+        .then(values => callback(values))
     }
-
+    
     addToCart(userId, bookId, quantity) {
         fetch("http://localhost:8080/home/user/cart/add-update", {
         method: 'PUT',
@@ -20,9 +22,27 @@ class BookDataLayer {
     fetchAllCartBook(callback) {
         fetch("http://localhost:8080/home/user/cart/getall/101")
         .then(res => res.json())
-        .then(values => callback(values))
+        .then(values => { 
+           // console.log("my books", booksObject = values);
+            callback(values);
+         })
     }
 
+    /*initialStates(callback) {
+        var booksObject = ''
+        var booksCount = ''
+        let initialState = ''
+        this.fetchAllCartBook( response => (
+            booksObject = response,
+            console.log("i am booksobject", response),
+            initialState = {
+                booksCount : booksObject.length
+            },
+            callback(initialState)
+        )
+        )
+    }*/
+    
     addToWishlist(userId, bookId) {
         fetch("http://localhost:8080/home/user/wishlist/add", {
         method: 'PUT',

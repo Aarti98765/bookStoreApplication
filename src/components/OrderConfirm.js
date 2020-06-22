@@ -14,7 +14,7 @@ class OrderConfirm extends Component {
    }
 
    handleClick = () => {
-       this.props.history.push('/Home')
+       this.props.history.push('/')
    }
 
    renderTableData() {

@@ -9,7 +9,9 @@ class CartBookView extends Component {
         this.state = {
         booksInCart : [] ,
         count : 0,
-        books : ''
+        books : '',
+        booksObject : '',
+        booksCount : '',
         }
     }
 
@@ -22,15 +24,14 @@ class CartBookView extends Component {
         })
     }
 
-    initialStates = () => {
+   /* initialStates() {
+        console.log("redux", this.state.booksCount);
         const initialState = {
-            basketNumbers: 0,
-            cartCost: 0,
-            books : this.state.booksInCart 
+            booksCount : this.state.booksInCart.length 
         }
         return initialState
-    }
-
+    }*/
+    
     handleChangeBookDec(e) {
         let quantity = e.bookQuantity - 1;
         data.updateCart(101, e.id, quantity)

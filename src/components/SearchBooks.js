@@ -50,7 +50,7 @@ class SearchBook extends Component {
         return (
             <div style={{ flexDirection: 'row', marginTop: '30px' }}>
                 <div className="flex-container-sort">
-                    <input className="search-author-view" placeholder="Search book by author..." onChange={(event) => this.handleSearchBookView(event)}></input>
+                    <input className="search-author-view" placeholder="  Search book by title, author..." onChange={(event) => this.handleSearchBookView(event)}></input>
                 </div>
                 <div className="all-books-view" >
                     { books.map(book => (
