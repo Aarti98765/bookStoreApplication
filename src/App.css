@@ -597,9 +597,20 @@ li a {
   font-size: .9em; 
 }
 
-.FormField__Checkbox {
+.CheckboxLabel {
+  color: brown;
+  font-size: .9em;
+}
+
+.FormField__Admin {
   position: relative;
   top: 1.5px;
+}
+
+.FormField__User {
+  /*position: relative;*/
+  top: 1.5px;
+  margin-left: 20px;
 }
 
 .FormField__TermsLink {
