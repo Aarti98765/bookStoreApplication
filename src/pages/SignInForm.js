@@ -1,22 +1,36 @@
 import React, { Component } from 'react';
 import image from '../images/new.jpg';
-import { HashRouter as Router, Route, NavLink, Link } from 'react-router-dom';
-import SignUpForm from '../pages/SignUpForm';
-import ResetPassword from '../components/ResetPassword';
-import ForgotPassword from '../components/ForgotPassword';
-//import image from '../images/loginImage.jpeg';
+import { Link } from 'react-router-dom';
+import BookDataLayer from '../components/BookDataLayer';
 
+var data = new BookDataLayer();
 
 class SignInForm extends Component {
   constructor() {
     super();
     this.state = {
-      email: '',
+      username: '',
       password: ''
     };
+  }
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+  handleSetUserName = (event) => {
+    this.setState({
+      username: event.target.value
+    })
+    console.log(this.state.username)
+  } 
+
+  handleSetPassword = (event) => {
+    this.setState({
+      password: event.target.value
+    })  
+    console.log(this.state.password)
+  }
+
+  handleSignInOfUser = () => {
+    data.signInData(this.state.username, this.state.password)
+    console.log(localStorage.getItem("token"))
   }
 
   handleClick = () => {
@@ -31,20 +45,6 @@ class SignInForm extends Component {
     this.props.history.push('/ForgotPassword')
   }
 
-  handleChange(e) {
-    let target = e.target;
-    let value = target.type === 'checkbox' ? target.checked : target.value;
-    let name = target.name;
-
-    this.setState({
-      [name]: value
-    });
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-  }
-
   render() {
     return (
         <div className="Main_view">
@@ -56,20 +56,23 @@ class SignInForm extends Component {
               <lable className="FormTitle__Link_SignIn">Sign In</lable> or <lable className="FormTitle__Link_SignUp">Sign Up</lable>
             </div>
             <div className="FormCenter">
-              <form className="FormFields">
+              <div className="FormFields">
                 <div className="FormField">
-                  <label className="FormField__Label" htmlFor="email">E-Mail Address</label>
-                  <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" name="email" value={this.state.email} onChange={this.handleChange} />
+                  <label className="FormField__Label">Name</label>
+                  <input type="username" id="username" className="FormField__Input" placeholder="Enter your name" onChange={(e) => this.handleSetUserName(e)} />
                 </div>
                 <div className="FormField">
-                  <label className="FormField__Label" htmlFor="password">Password</label>
-                  <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" name="password" value={this.state.password} onChange={this.handleChange} />
+                  <label className="FormField__Label">Password</label>
+                  <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" onChange={(e) => this.handleSetPassword(e)} />
                 </div>
                 <div className="FormField">
-                  <button className="FormField__Button mr-20" onClick={this.handleForgotPasswordPage}>Sign In</button> <button className="FormField_Create_account" onClick={this.handleSignUpPage}>Create an account</button>
+                  <Link to="/">
+                  <button className="FormField__Button mr-20" onClick={this.handleSignInOfUser}>Sign In</button> 
+                  </Link>
+                  <button className="FormField_Create_account" onClick={this.handleSignUpPage}>Create an account</button>
                 </div>
-                <Link to="/ResetPassword" className="FormField__Link">Forget Password</Link>
-              </form>
+                <Link to="/ForgotPassword" className="FormField__Link">Forget Password</Link>
+              </div>
             </div>
           </div>
         </div>  

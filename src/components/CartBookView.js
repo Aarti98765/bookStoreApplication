@@ -8,7 +8,6 @@ class CartBookView extends Component {
         super();
         this.state = {
         booksInCart : [] ,
-        count : 0,
         books : '',
         booksObject : '',
         booksCount : '',
@@ -24,14 +23,6 @@ class CartBookView extends Component {
         })
     }
 
-   /* initialStates() {
-        console.log("redux", this.state.booksCount);
-        const initialState = {
-            booksCount : this.state.booksInCart.length 
-        }
-        return initialState
-    }*/
-    
     handleChangeBookDec(e) {
         let quantity = e.bookQuantity - 1;
         data.updateCart(101, e.id, quantity)
@@ -58,7 +49,7 @@ class CartBookView extends Component {
     }
 
     handleRemoveBookFromCart = (e) =>{
-        data.removeBookFromCart(101,e,1)
+        data.removeFromCart(101,e,1)
         console.log("aarti", e);
         window.location.reload(true);
     }   
@@ -71,7 +62,6 @@ class CartBookView extends Component {
                     <Fragment key={books.id}>
                         <div className="flex-container-column" >
                             <div style={{ borderTop: 'white', borderLeft: '1px solid red', borderRight: '1px solid red', marginLeft: '130px', marginRight: '130px', marginTop: '0px' }}>
-        
                                 <div style={{ border: '1px solid red', marginLeft: '60px', marginRight: '60px', marginTop: '20px', marginBottom: '20px' }}>
                                     <div className="flex-container-row">
                                         <div style={{ marginTop: '20px' }} ><img src={books.picPath} alt="" className="image_style" /></div>

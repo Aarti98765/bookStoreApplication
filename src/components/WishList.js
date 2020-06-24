@@ -1,6 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import BookDataLayer from './BookDataLayer'
-import cart from './Cart';
+import BookDataLayer from './BookDataLayer';
 
 var data = new BookDataLayer();
 
@@ -23,7 +22,7 @@ class WishList extends Component {
     }
 
     handleRemovebooks = (e) =>{
-        data.removeBookFromWishList(101, e)
+        data.removeFromWishList(101, e)
         console.log("aarti", e);
         window.location.reload(false);
     }
@@ -32,15 +31,15 @@ class WishList extends Component {
         data.addToCart(101, e, 1)
         console.log("hi aarti", e)
         this.props.history.push('/cart');
-        data.removeBookFromWishList(101, e)
+        data.removeFromWishList(101, e)
     }
 
     render() {
         let { booksInWishList } = this.state
-        let {counter} = this.state.counter + 1
+    
     return (
-       counter === 0? <h2 style={{ marginLeft:'300px', marginTop:'100px' }}>"Oops!  You'r wishlist is empty."</h2> : 
-        <div>,
+       this.state.counter === booksInWishList.length? <h2 style={{ marginLeft:'300px', marginTop:'100px' }}>"Oops!  You'r wishlist is empty."</h2> : 
+        <div>
         { booksInWishList.map((books) => (
                 <Fragment>
                     <div className="flex-container-column" key={books.id} >

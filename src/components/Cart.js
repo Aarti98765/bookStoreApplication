@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import CustomerDetailsForm from './CustomerDetailsForm';
-import OrderConfirm from './OrderConfirm';
 import CartBookView from './CartBookView';
 import OrderSummaryView from './OrderSummaryView';
 

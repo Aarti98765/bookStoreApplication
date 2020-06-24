@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Cart from '../components/CartBookView';
-import SignInForm from "../pages/SignInForm";
 import BookDataLayer from './BookDataLayer';
 import { Badge } from '@material-ui/core';
 import Home from './Home';
 import { connect } from 'react-redux';
-import LoginRegistration from './LoginRegistration';
 
 var data = new BookDataLayer();
 
@@ -40,8 +37,7 @@ class Navbar extends Component {
     render() {
         let { booksInCart } = this.state
         let { booksInWishList } = this.state
-        console.log(this.props.cartCount)
-      //  this.cartProps.dispatch({ type: "findLengthOfCart" })
+
         return (
             <div>
                 <nav className="menu">

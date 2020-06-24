@@ -6,25 +6,23 @@ import { Link } from 'react-router-dom';
 var data = new BookDataLayer();
 
 class SignUpForm extends Component {
-  constructor() {
-    super();
+  constructor(prop) {
+    super(prop);
 
     this.state = {
-      emailId: '',
+      email: '',
       password: '',
-      userName: '',
-      phoneNumber: '',
-      role: [],
-      hasAgreed: false,
-      roleChecked: false,
+      username: '',
+      phoneNo: '',
+      role: [], 
       admin: false,
       user: false
-    };
   }
+}
 
   handleSetName = async(e) => {
     await this.setState({
-      userName : e.target.value
+      username : e.target.value
     })
   }
 
@@ -36,13 +34,13 @@ class SignUpForm extends Component {
 
   handleSetPhoneNumber = async(e) => {
     await this.setState({
-      phoneNumber : e.target.value
+      phoneNo : e.target.value
     })
   }
 
   handleSetEmailAddress = async(e) => {
     await this.setState({
-      emailId : e.target.value
+      email : e.target.value
     })
   }
 
@@ -60,16 +58,19 @@ class SignUpForm extends Component {
 
   handleSubmitSignUpForm = () => {
     if (this.state.admin)
-    this.setState({
-      role: this.state.role.push("admin")
-    })
-
-    if (this.state.user)
-    this.setState({
-      role: this.state.role.push("user")
-    })
-
-    data.signUpData(this.state.userName, this.state.password, this.state.emailId, this.state.phoneNumber, this.state.role)
+        this.setState({
+            role: this.state.role.push("admin")
+        })
+        console.log(this.state.role);
+        
+        if (this.state.user)
+        this.setState({
+            role: this.state.role.push("user")
+        })
+        console.log(this.state.role);
+        console.log("beforeAPI", this.state.email)
+        
+        data.signUpData(this.state.username,  this.state.password, this.state.email, this.state.phoneNo, this.state.role)
   }
 
   handleChange = (e) => {
@@ -96,19 +97,19 @@ class SignUpForm extends Component {
             <div className="FormFields">
               <div className="FormField">
                 <label className="FormField__Label">Name</label>
-                <input type="text" id="name" className="FormField__Input" placeholder="Enter your name" onChange={this.handleSetName} />
+                <input type="text" id="name" className="FormField__Input" placeholder="Enter your name" onChange={(e) => this.handleSetName(e)} />
               </div>
               <div className="FormField">
                 <label className="FormField__Label">Password</label>
-                <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" onChange={this.handleSetPassword} />
+                <input type="password" id="password" className="FormField__Input" placeholder="Enter your password" onChange={(e) => this.handleSetPassword(e)} />
               </div>
               <div className="FormField">
               <label className="FormField__Label">Phone Number</label>
-              <input type="phoneNumber" id="phoneNumber" className="FormField__Input" placeholder="Enter your phone number" onChange={this.handleSetPhoneNumber} />
+              <input type="phoneNumber" id="phoneNumber" className="FormField__Input" placeholder="Enter your phone number" onChange={(e) => this.handleSetPhoneNumber(e)} />
             </div>
               <div className="FormField">
                 <label className="FormField__Label">E-Mail Address</label>
-                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" onChange={this.handleSetEmailAddress} />
+                <input type="email" id="email" className="FormField__Input" placeholder="Enter your email" onChange={(e) => this.handleSetEmailAddress(e)} />
               </div>
               <div className="FormField">
               <label className="CheckboxLabel">Select Role : </label>

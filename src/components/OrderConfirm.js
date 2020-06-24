@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import image from '../images/success1.png';
-import Home from '../components/Home';
 
 class OrderConfirm extends Component {
    constructor(props) {
