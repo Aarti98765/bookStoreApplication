@@ -1,43 +1,19 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import BookDataLayer from './BookDataLayer';
 import { Badge } from '@material-ui/core';
 import Home from './Home';
 import { connect } from 'react-redux';
-
-var data = new BookDataLayer();
 
 class Navbar extends Component {
     constructor() {
         super()
         this.state = {
-            books: [],
-            booksInCart: [],
-            booksInWishList: [],
-            showHome: false,
-            cartCount: ''
+            cartCount: '',
+            wishListCount: ''
         }
     }
 
-    componentDidMount() {
-        data.fetchAllCartBook(response => {
-            this.setState({
-                booksInCart: response
-            })
-        })
-
-        data.fetchAllWishlistBook(response => {
-            console.log(response)
-            this.setState({
-                booksInWishList: response
-            })
-        })
-    }
-
     render() {
-        let { booksInCart } = this.state
-        let { booksInWishList } = this.state
-
         return (
             <div>
                 <nav className="menu">
@@ -47,7 +23,7 @@ class Navbar extends Component {
                     }}></ion-icon>
 
                     <div className="font-size">
-                       <Link to="/" style={{color:'brown'}}><h1 style={{ color: 'white', marginTop:'16px' }} >Bookstore</h1></Link>
+                        <Link to="/" style={{ color: 'brown' }}><h1 style={{ color: 'white', marginTop: '16px' }} >Bookstore</h1></Link>
                     </div>
                     <div>
                         <input onClick={event => window.location.href = '/SearchBook'} style={{ marginTop: '18px', marginLeft: '20px', width: '260px', height: '20px' }}
@@ -55,16 +31,15 @@ class Navbar extends Component {
                         {this.state.showHome && <Home info={this.state.books} />}
                     </div>
                     <ul>
-                    <li><label style={{ marginLeft: '140px', color: 'white' }}>Cart</label>
-                        <Link to="/Cart" style={{ backgroundColor: 'brown', color: 'white', width: '80px', height: '50px' }} >
-                            <ion-icon name="cart-outline" ></ion-icon><span style={{ marginLeft: '7px' }}><Badge anchorOrigin={{ vertical: 'Top', horizontal: 'right' }} badgeContent={booksInCart.length} color="primary">
-                {/*badgeContent={this.props.cartCount}*/}
+                        <li><label style={{ marginLeft: '140px', color: 'white' }}>Cart</label>
+                            <Link to="/Cart" style={{ backgroundColor: 'brown', color: 'white', width: '80px', height: '50px' }} >
+                            <ion-icon name="cart-outline" ></ion-icon><span style={{ marginLeft: '7px' }}><Badge anchorOrigin={{ vertical: 'Top', horizontal: 'right' }} badgeContent={this.props.cartBookCount} showZero color="primary">
+                                </Badge></span></Link></li>
+                        <li><Link to="/WishList" style={{ backgroundColor: 'brown', color: 'white', width: '50px' }}  >
+                            <ion-icon name="list-circle-outline"></ion-icon>
+                            <span style={{ marginLeft: '6px' }}><Badge anchorOrigin={{ vertical: 'Top', horizontal: 'right' }} badgeContent={this.props.wishBookCount} showZero color="primary">
                             </Badge></span></Link></li>
-                    <li><Link to="/WishList" style={{ backgroundColor: 'brown', color: 'white', width: '50px' }}  >
-                        <ion-icon name="list-circle-outline"></ion-icon>
-                        <span style={{ marginLeft: '6px' }}><Badge anchorOrigin={{ vertical: 'Top', horizontal: 'right' }} badgeContent={booksInWishList.length} color="primary">
-                        </Badge></span></Link></li>
-                        <li><Link to="/SignInForm" style={{ marginLeft: '30px', color: 'white' }}>Login</Link></li>    
+                        <li><Link to="/SignInForm" style={{ marginLeft: '30px', color: 'white' }}>Login</Link></li>
                     </ul>
                 </nav>
             </div>
@@ -74,7 +49,8 @@ class Navbar extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    cartCount: state.cartLength
-})
+    cartCount: state.cartCount,
+    wishListCount: state.wishListCount
+});
 
-export default connect(mapStateToProps) (Navbar);
+export default connect(mapStateToProps)(Navbar);

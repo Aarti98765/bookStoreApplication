@@ -1,5 +1,8 @@
 import React from 'react'
 import BookDataLayer from './BookDataLayer';
+import { Typography } from '@material-ui/core';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 var data = new BookDataLayer();
 
@@ -10,7 +13,8 @@ class Home extends React.Component {
             books: [],
             isShown: false,
             activePage: 8,
-            value : 'Sort by relevance'
+            value : 'Sort by relevance',
+            cardHover: false
         }
         this.setIsShown = this.setIsShown.bind(this);
         this.setIsHide = this.setIsHide.bind(this);
@@ -28,7 +32,7 @@ class Home extends React.Component {
         });
     }
     
-     async componentDidMount() {
+    async componentDidMount() {
         await data.fetchAllBook(response => {
             this.setState({
                 books: response
@@ -37,12 +41,21 @@ class Home extends React.Component {
     }
 
     handleClickAddToCart = (e) => {
-        data.addToCart(101, e, 1)
+        data.addToCart(e, 1)
+        window.location.reload(false);
     }
 
     handleClickAddToWishList = (e) => {
         data.addToWishlist(101, e)
+        window.location.reload(false);
     } 
+
+    handleOnHoverCard = (e) => {
+        console.log("entering");
+        this.setState({
+            cardHover: !this.state.cardHover
+        })        
+    }
 
     handleChangeBookSort = async (event) => {
         await this.setState ({
@@ -63,11 +76,11 @@ class Home extends React.Component {
                 })
             })
         }
-       // window.location.reload(true)
     }   
 
     render() {
         let { books } = this.state
+        console.log(books.description)
         return (
             <div style={{ flexDirection: 'row', marginTop: '30px' }}>
                 <div className="flex-container-sort">
@@ -80,26 +93,13 @@ class Home extends React.Component {
                     </select>
                 </div>
                 <div className="all-books-view" >
-                    { books.map(book => (
-                        <div className="single-book-view" key={book.id} >
+                    { 
+                        books.map(book => (
+                        <div className="single-book-view" key={book.id} onMouseEnter= {this.handleOnHoverCard} onMouseLeave={this.handleOnHoverCard} >
                             <div className="image-outer-view" >
-                            <img className="image-view" src={book.picPath} alt="" onMouseEnter = { this.setIsShown}
-                                onMouseLeave={this.setIsHide} />
+                            <img className="image-view" src={book.picPath} alt="" />
                             </div>
                             <br></br>
-                            { this.state.isShown && (
-                                book.nameOfBook === 'The Girl in Room 105' ? <div>
-                                    I'll appear when you hover over the first image.
-                            </div> :
-                                    book.nameOfBook === 'Angels And Demons' ? <div>
-                                        I'll appear when you hover over the second image.
-                            </div> :
-                                    book.nameOfBook === 'Angels & Demons - Movie Tie-In' ? <div>
-                                            I'll appear when you hover over the third image.
-                            </div> :
-                                        <div>
-                            </div>
-                                )  }
                             <div style={{ marginLeft: '10px' }}>
                             <text className="book-name-view" >{book.nameOfBook}</text><br></br>
                             <text className="book-author-view" >{book.author}</text><br></br>
@@ -107,7 +107,18 @@ class Home extends React.Component {
                             </div>
                             <button className="addToCart" onClick={() => this.handleClickAddToCart(book.id)}>ADD TO BAG</button>
                             <button className="addToWishList" onClick={() => this.handleClickAddToWishList(book.id)} >WISHLIST</button>     
-                        </div>
+                            {this.state.cardHover? <div>{book.nameOfBook}</div> : null}
+                            {/*<Card className="bookInfo" variant="outlined">
+                            <CardContent>
+                            <Typography color="textPrimary" style={{ fontFamily: 'Arial', fontSize: 16, fontWeight: 600 }} gutterBottom>
+                                Book Detail
+                            </Typography>
+                            <Typography color="textSecondary" style={{ fontSize: 12, textAlign: 'initial' }} gutterBottom>
+                                {book.description}
+                            </Typography>
+                        </CardContent>
+                        </Card> */}
+                    </div>
                     ))}
                 </div>
             </div>

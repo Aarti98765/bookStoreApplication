@@ -1,5 +1,6 @@
 import React, { Fragment, Component } from 'react';
 import BookDataLayer from './BookDataLayer';
+import { connect } from 'react-redux';
 
 var data = new BookDataLayer();
 
@@ -7,56 +8,64 @@ class CartBookView extends Component {
     constructor() {
         super();
         this.state = {
-        booksInCart : [] ,
-        books : '',
-        booksObject : '',
-        booksCount : '',
+            booksInCart : [],
+            booksCount : ''
         }
     }
 
-    componentDidMount() {
-        data.fetchAllCartBook(response => {
+    async componentDidMount() {
+        await data.fetchAllCartBook(response => {
             console.log(response)
             this.setState({
-                booksInCart : response
+                booksInCart : response,
+                bookCount: response.length
             })
         })
+        this.props.dispatch({ type: "returnCartBooksLength", payload: this.state.booksInCart.length })
     }
 
-    handleChangeBookDec(e) {
+    async handleChangeBookDec(e) {
         let quantity = e.bookQuantity - 1;
-        data.updateCart(101, e.id, quantity)
+        await data.updateCart(e.id, quantity)
         window.location.reload(true)
-        data.fetchAllCartBook(response => {
+        await data.fetchAllCartBook(response => {
             this.setState({
                 booksInCart: response
             })
         })
         window.location.reload(true)
+        this.props.dispatch({ type: "returnCartBooksLength", payload: this.state.booksInCart.length })
     }
 
-    handleChangeBookInc(e) {
+    async handleChangeBookInc(e) {
         let quantity = e.bookQuantity + 1;
-        data.updateCart(101, e.id, quantity)
+        await data.updateCart(e.id, quantity)
         window.location.reload(true)
-        data.fetchAllCartBook(response => {
+        await data.fetchAllCartBook(response => {
             console.log(response)
             this.setState({
                 booksInCart: response
             })
         })
         window.location.reload(true)
+        this.props.dispatch({ type: "returnCartBooksLength", payload: this.state.booksInCart.length })
     }
 
-    handleRemoveBookFromCart = (e) =>{
-        data.removeFromCart(101,e,1)
-        console.log("aarti", e);
-        window.location.reload(true);
+    handleRemoveBookFromCart = async(e) =>{
+        await data.removeFromCart(e,1)
+        window.location.reload(false);
+        await data.fetchAllCartBook(response => {
+            this.setState({
+                booksIncart: response
+            })
+        });
+        this.props.dispatch({ type: "returnCartBooksLength", payload: this.state.booksInCart.length })
     }   
 
     render() {
+       this.props.dispatch({ type: "returnCartBooksLength", payload: this.state.booksInCart.length }); 
        let { booksInCart } = this.state  
-    return (
+       return (
             <div>
             { booksInCart.map(books => (
                     <Fragment key={books.id}>
@@ -86,10 +95,14 @@ class CartBookView extends Component {
                             </div>
                         </div>
                     </Fragment>
-                ))}
+            ))}
             </div>         
         );
     }
 }
 
-export default CartBookView
+const mapStateToProps = (state) => ({
+    cartCount: state.cartCount
+});
+
+export default connect(mapStateToProps) (CartBookView)

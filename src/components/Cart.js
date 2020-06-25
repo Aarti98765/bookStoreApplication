@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import CustomerDetailsForm from './CustomerDetailsForm';
 import CartBookView from './CartBookView';
 import OrderSummaryView from './OrderSummaryView';
+import { connect } from 'react-redux';
 
 class Cart extends Component {
     constructor() {
         super();
         this.state = {
-        booksOrderSummary : [],
-        showHide : false,
-        showHideOrderSummary : false,
-        counter : 0,
-        view: false
+            booksOrderSummary : [],
+            showHide : false,
+            showHideOrderSummary : false,
+            counter : 0,
+            view: false
         }
     }
 
@@ -40,9 +41,9 @@ class Cart extends Component {
     }
 
     render() {
-        let {counter} = this.state.counter + 1
+        console.log('cart length', this.props.cartCount)
     return (
-        counter === 0? <h2 style={{ marginLeft:'300px', marginTop:'100px' }}>"Oops!  You'r cart is empty."</h2> :
+        /*this.props.cartCount === 0? <h2 style={{ marginLeft:'300px', marginTop:'100px' }}>"Oops!  You'r cart is empty."</h2> :*/
         <div>
             <div style={{ border: '1px solid red', marginLeft: '130px', marginRight: '130px', marginTop: '10px' }}>
                 <div>
@@ -90,4 +91,8 @@ class Cart extends Component {
     }
 }
 
-export default Cart
+const mapStateToProps = (state) => ({
+    cartCount: state.cartCount
+});
+
+export default connect(mapStateToProps) (Cart)
