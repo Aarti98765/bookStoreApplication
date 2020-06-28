@@ -116,6 +116,9 @@ class Home extends React.Component {
                             </div>
                         ))}
                 </div>
+                <div>
+                    <Pagination items={this.state.books} onChangePage={this.onChangePage} />
+                </div>
             </div>
         );
     }
