@@ -146,6 +146,71 @@ class BookDataLayer {
         .then(res => localStorage.setItem("token", res.accessToken))
     }
 
+    addCustomerDetails(name, pincode, locality, address, city, landmark, addressType) {
+        fetch("http://localhost:8080/home/customer/adddetails", {
+            method: 'POST',
+            headers: {
+                "content-type": "Application/json",
+                "token": localStorage.getItem("token")
+            },
+            body: JSON.stringify({
+                "name": name,
+                "pincode": pincode,
+                "locality": locality,
+                "address": address,
+                "city": city,
+                "landmark": landmark,
+                "addressType": addressType
+            })
+        })
+            .then(res => res.text())
+            .then(res => console.log(res))
+    }
+
+    isCustomerDetailsExisted(callback) {
+        fetch("http://localhost:8080/home/customer/isexisted", {
+            method: 'GET',
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        })
+        .then(res => res.text())
+        .then(res => callback(res)
+        )
+    }
+
+    placeOrder(callback) {
+        fetch('http://localhost:8080/home/user/cart/orderplaced/orderid', {
+            method: 'GET',
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        })
+            .then(res => res.text())
+            .then(values => callback(values))
+    }
+
+    getOrderId(callback) {
+        fetch('http://localhost:8080/home/user/cart/getorderid', {
+            method: 'GET',
+            headers: {
+                "token": localStorage.getItem("token")
+            }
+        })
+            .then(res => res.text())
+            .then(values => callback(values))
+    }
+
+    forgotPassword(email) {
+        fetch("http://localhost:8080/api/auth/forgotpassword", {
+            method: 'POST',
+            body: (email)
+        })
+            .then(res => res.text()
+                .then(res => console.log("message", res)
+                ))
+    }
+
 }
 
 export default BookDataLayer;

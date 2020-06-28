@@ -3,17 +3,79 @@ import CustomerDetailsForm from './CustomerDetailsForm';
 import CartBookView from './CartBookView';
 import OrderSummaryView from './OrderSummaryView';
 import { connect } from 'react-redux';
+import BookDataLayer from './BookDataLayer';
+
+var data = new BookDataLayer();
 
 class Cart extends Component {
     constructor() {
         super();
         this.state = {
             booksOrderSummary : [],
-            showHide : false,
             showHideOrderSummary : false,
             counter : 0,
-            view: false
+            addressType: '',
+            toggle: false,
+            showHide : false,
+            summaryToggle: false,
+            names:''
         }
+    }
+
+    getCustomerDetails = (name) => {
+        this.setState({
+            names : name
+        })
+        console.log("wassup", this.state.names)
+    }
+
+    handleChangeEnableCustomerDetails = async() => {
+        await data.isCustomerDetailsExisted(response => {
+            console.log("result : ", response)
+            if (response == 'true') {
+             this.setState({
+                toggle: false,
+                summaryToggle: true
+            })
+            console.log("toggle : ", this.state.toggle);
+            console.log("summarytoggle : ", this.state.summaryToggle);
+        }else {
+            this.setState({
+                toggle: true,
+                summaryToggle: false
+            })
+            console.log("toggle123 : ", this.state.toggle);
+            console.log("summarytoggle : ", this.state.summaryToggle);
+        }
+        })
+    }
+
+    handleChangeEnableOrderSummary = async () => {
+        
+        if (this.state.home) {
+            await this.setState({
+                addressType: 'home'
+            })
+        }
+        if (this.state.work) {
+            await this.setState({
+                addressType: 'work'
+            })
+        }
+        if (this.state.other) {
+            await this.setState({
+                addressType: 'other'
+            })
+        }
+
+        console.log("type", this.state.addressType);
+
+        await data.addCustomerDetails(this.state.name, this.state.pincode, this.state.locality, this.state.address, this.state.city, this.state.landmark, this.state.addressType)
+        await this.setState({
+            summaryToggle: true,
+            toggle: false
+        })
+
     }
 
     hidePlaceOrderView = () => {
@@ -26,7 +88,7 @@ class Cart extends Component {
          this.props.history.push('/OrderConfirm')
      }
 
-     hideSummary = () => {
+    hideSummary = () => {
         this.setState({
             showHideOrderSummary : !this.state.showHideOrderSummary,
         })
@@ -37,6 +99,12 @@ class Cart extends Component {
         this.setState({
           showHideEdit: !this.state.showHideEdit,
           view : !this.state.view
+        })
+    }
+
+    async handleChangePlaceOrder() {
+        await data.placeOrder(response => {
+            console.log("order id : ", response)
         })
     }
 
@@ -65,17 +133,17 @@ class Cart extends Component {
                 { this.state.showHide && 
                     <div>
                         <span></span>
-                            <CustomerDetailsForm />
-                        <button onClick={this.showEditView} style={{ marginLeft: '500px', width: '100px', height: '27px', border: 'white', color: 'white', backgroundColor: 'rgb(26, 74, 165)', marginBottom: '10px' }} className="btn btn-default">
+                            <CustomerDetailsForm function={this.getCustomerDetails}/>
+                        <button onClick={this.handleChangeEnableOrderSummary}  style={{ marginLeft: '500px', width: '100px', height: '27px', border: 'white', color: 'white', backgroundColor: 'rgb(26, 74, 165)', marginBottom: '10px' }} className="btn btn-default">
                             Continue
                         </button>
                     </div> 
                 }
             </div>
             <div style={{ border: '1px solid red', marginLeft: '130px', marginRight: '130px', marginTop:'10px' }}>
-                <button className="btn-style-summary" onClick={this.hideSummary}>Order Summary</button>
+                <button className="btn-style-summary">Order Summary</button>
 
-                { this.state.view && 
+                { this.state.summaryToggle && 
                     <div >
                     <div style={{ borderTop: '1px solid red', width:'100%'}}>
                         <OrderSummaryView />

@@ -386,6 +386,25 @@ li a {
   font-weight: bold;
 }
 
+.onBookHover:hover .bookDescription{
+  display: block;
+  position: absolute;
+  height: 232px;
+  width: 178px;
+  margin-left: 162px;
+  margin-top: -232px;
+  background-color: white;
+  outline-style: groove;
+  outline-width: 0.1px;
+  outline-color: grey;
+  font-size: 8px;
+}
+
+.bookDescription {
+  position: absolute;
+  display: none;
+}
+
 /*.................................................*/
 
 .App-logo {
@@ -576,7 +595,6 @@ li a {
   border: none;
   outline: none;
   border-radius: 25px;
-/*  padding: 15px 70px; */
   font-size: .8em;
   font-weight: 500;
   width: 150px;
@@ -608,7 +626,6 @@ li a {
 }
 
 .FormField__User {
-  /*position: relative;*/
   top: 1.5px;
   margin-left: 20px;
 }
@@ -638,4 +655,25 @@ li a {
 .bookInfo {
   position: absolute;
   display: none;
+}
+
+/*---------------------------Pagination View--------------------------------*/
+.pagination {
+  flex-direction: row;
+  display: flex;
+}
+
+.page-button-view {
+  color:brown;
+  background-color: #F8F8F8;
+  margin-left: 24px;
+  margin-top: 50px;
+  margin-right: 23px;
+}
+
+.page-button-view1 {
+  color:brown;
+  background-color: #F8F8F8;
+  margin-top: 50px;
+  margin-right: 3px;
 }

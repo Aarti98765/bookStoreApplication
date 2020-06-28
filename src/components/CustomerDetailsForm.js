@@ -2,7 +2,16 @@ import React, { Component } from "react";
 import OrderSummaryView from './OrderSummaryView';
 
 const initialState = {
-  name : '',
+  name: '',
+  pincode: '',
+  locality: '',
+  address: '',
+  city: '',
+  landmark: '',
+  addressType: '',
+  home: false,
+  work: false,
+  other: false,
   nameError: '',
   phoneNumberError: '',
   pinCodeError: '',
@@ -14,22 +23,6 @@ class CustomerDetailsForm extends Component {
   constructor() {
     super();
     this.state = initialState
-    this.onValueChange = this.onValueChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  onValueChange(event) {
-    this.setState({
-      selectedOption: event.target.value
-    });
-  }
-
-  showEditView = (event) => {
-    event.preventDefault();
-    this.setState({
-      showHideEdit: !this.state.showHideEdit,
-      view : true
-    })
   }
 
   validate = () => {
@@ -37,135 +30,135 @@ class CustomerDetailsForm extends Component {
     let phoneNumberError = "";
     let pinCodeError = "";
 
-    if(!this.state.name) {
+    if (!this.state.name) {
       nameError = "name can not be blank"
     }
 
-    if(nameError) {
-      this.setState({nameError});
+    if (nameError) {
+      this.setState({ nameError });
       return false;
     }
 
     return true;
   }
 
-  handleSubmit(event) {
-    event.preventDefault();
-    console.log(this.state.selectedOption)
-    const isValid = this.validate();
-    if(isValid) {
-      console.log(this.state)
-      // clear form
-      this.setState(initialState);
-    }
+
+  handleSetName = async(e) => {
+    await this.setState({
+      name: e.target.value
+    })
+
+    this.props.function(this.state.name)
+  }
+
+  handleSetPincode = (e) => {
+    this.setState({
+      pincode: e.target.value
+    })
+  }
+
+  handleSetLocality = async (e) => {
+    await this.setState({
+      locality: e.target.value
+    })
+  }
+
+  handleSetAddress = (e) => {
+    this.setState({
+      address: e.target.value
+    })
+  }
+
+  handleSetCity = (e) => {
+    this.setState({
+      city: e.target.value
+    })
+  }
+
+  handleSetLandmark = async (e) => {
+    await this.setState({
+      landmark: e.target.value,
+    })
+  }
+
+  handleSelectHome = async () => {
+    await this.setState({
+      work: false,
+      home: true,
+      other: false
+    })
+  }
+
+  handleSelectWork = async () => {
+    await this.setState({
+      work: true,
+      home: false,
+      other: false
+    })
+    console.log("work", this.state.work);
+  }
+
+  handleSelectOther = async () => {
+    await this.setState({
+      work: false,
+      home: false,
+      other: true
+    })
+    console.log("other", this.state.other);
   }
 
   render() {
     return (
       <div>
-        {this.state.showHideEdit && <button style={{ marginLeft: '540px', backgroundColor: 'white', border: 'white' }}>Edit</button>}
-        <form onSubmit={this.handleSubmit}>
+        <form>
           <span></span>
-          <input
-            type="text"
-            placeholder="   Name"
-            className="style-name-text"
-          />
-          <input className="style-number-text"
-            type="text"
-            placeholder="    Phone Number"
-          />
+          <input className="style-name-text" placeholder="   Name" onChange={(e) => this.handleSetName(e)}/>
+          <input className="style-number-text" placeholder="    Pincode " onChange={(e) => this.handleSetPincode(e)} />
           <div>
-
             <div>
               <span></span>
               <div style={{ color: 'red', marginLeft: '75px', fontSize: '12px' }}>{this.state.nameError}</div>
               <div style={{ color: 'red', marginLeft: '142px', fontSize: '12px' }}>{this.state.phoneNumberError}</div>
             </div>
-
             <span> </span>
-            <input className="style-pincode-text"
-              type="text"
-              placeholder="    Pincode"
-            />
-            <input className="style-number-text"
-              type="text"
-              placeholder="    Locality"
-            />
+            <input className="style-pincode-text" placeholder="   Gender" />
+            <input className="style-number-text" placeholder="    Locality" onChange={(e) => this.handleSetLocality(e)}/>
           </div>
+
           <div>
             <span></span>
             <div style={{ color: 'red', marginLeft: '75px', fontSize: '12px' }}>{this.state.pinCodeError}</div>
             <div style={{ color: 'red', marginLeft: '175px', fontSize: '12px' }}>{this.state.pinCodeError}</div>
           </div>
+
           <div>
-            <textarea className="style-address-text"
-              type="text"
-              placeholder="  Address"
-            />
+            <textarea className="style-address-text" placeholder="  Address" />
           </div>
-          <div style={{ color: 'red', fontSize:'12px', marginLeft:'75px' }}>{this.state.pinCodeError}</div>          
+
+          <div style={{ color: 'red', fontSize: '12px', marginLeft: '75px' }}>{this.state.pinCodeError}</div>
           <div>
             <span> </span>
-            <input className="style-pincode-text"
-              type="text"
-              placeholder="    City/Town"
-            />
-            <input className="style-number-text"
-              type="text"
-              placeholder="    Landmark"
-            />
+            <input className="style-pincode-text" placeholder="    City/Town" onChange={(e) => this.handleSetCity(e)}/>
+            <input className="style-number-text" placeholder="    Landmark" onChange={(e) => this.handleSetLandmark(e)}/>
           </div>
           <div>
             <span></span>
-            <lable style={{ color:'red', marginLeft:'75px', fontSize:'12px' }}>{this.state.pinCodeError}</lable>
-            <lable style={{ color:'red', marginLeft:'142px', fontSize:'12px' }}>{this.state.pinCodeError}</lable>
-          </div> 
+            <lable style={{ color: 'red', marginLeft: '75px', fontSize: '12px' }}>{this.state.pinCodeError}</lable>
+            <lable style={{ color: 'red', marginLeft: '142px', fontSize: '12px' }}>{this.state.pinCodeError}</lable>
+          </div>
 
           <div className="radio">
+            <text style={{ marginLeft: '62px' }}>Type</text>
             <span></span>
-            <label style={{ marginRight: '50px', marginLeft: '69px' }}>
-              <input
-                type="radio"
-                value="Home"
-                checked={this.state.selectedOption === "Home"}
-                onChange={this.onValueChange}
-              />
-          Home
-        </label>
-
+            <label style={{ marginRight: '50px', marginLeft: '60px' }}>
+              <input type="radio" value="Home" onChange={this.handleSelectHome} /> Home
+            </label>
             <label style={{ marginRight: '50px' }}>
-              <input
-                type="radio"
-                value="Work"
-                checked={this.state.selectedOption === "Work"}
-                onChange={this.onValueChange}
-              />
-          Work
-        </label>
-
+              <input type="radio" value="Work" onChange={this.handleSelectWork} /> Work
+            </label>
             <label>
-              <input
-                type="radio"
-                value="Other"
-                checked={this.state.selectedOption === "Other"}
-                onChange={this.onValueChange}
-              />
-          Other
-        </label>
-
-          {/* <div>
-              <span></span>
-              <div style={{ marginLeft: '120px', marginBottom: '20px' }}>
-                Selected option is : {this.state.selectedOption}
-                <button style={{ marginTop: '18px', marginLeft: '166px', width: '80px', height: '27px', border: 'white', color: 'white', backgroundColor: 'rgb(26, 74, 165)' }} className="btn btn-default" type="submit">
-                  Submit
-                </button>
-                <button onClick={this.showEditView} style={{ marginTop: '18px', marginLeft: '10px', width: '80px', height: '27px', border: 'white', color: 'white', backgroundColor: 'rgb(26, 74, 165)' }} className="btn btn-default">
-                  Continue
-                </button>
-              </div>
-          </div> */}
+              <input type="radio" value="Other" onChange={this.handleSelectOther} /> Other
+            </label>
           </div>
         </form>
       </div>

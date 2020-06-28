@@ -1,19 +1,47 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { Badge } from '@material-ui/core';
-import Home from './Home';
 import { connect } from 'react-redux';
+import BookDataLayer from './BookDataLayer';
+
+var data = new BookDataLayer();
 
 class Navbar extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             cartCount: '',
-            wishListCount: ''
+            wishListCount: '',
+            searchText: '',
+            searchView: false,
+            books: []
+        }
+    }
+
+    handleChange = async (event) => {
+        await this.setState({
+            searchText: event.target.value
+        })
+
+        if (this.state.searchText !== '') {
+            data.fetchAllSearchBook(this.state.searchText, response => {
+                console.log("text1", this.state.searchText)
+                this.props.function(
+                    response
+                )
+                this.props.history.push('/SearchBooks')
+            })
+        }
+
+        if (this.state.searchText === '') {
+            data.fetchAllSearchBook(this.state.searchText, response => {
+                window.location.reload(false)
+            })
         }
     }
 
     render() {
+        console.log("hhhh", this.state.searchText, this.state.books)
         return (
             <div>
                 <nav className="menu">
@@ -26,14 +54,13 @@ class Navbar extends Component {
                         <Link to="/" style={{ color: 'brown' }}><h1 style={{ color: 'white', marginTop: '16px' }} >Bookstore</h1></Link>
                     </div>
                     <div>
-                        <input onClick={event => window.location.href = '/SearchBook'} style={{ marginTop: '18px', marginLeft: '20px', width: '260px', height: '20px' }}
-                            placeholder="Search..."></input>
-                        {this.state.showHome && <Home info={this.state.books} />}
+                        <input onChange={event => this.handleChange(event)} style={{ marginTop: '18px', marginLeft: '20px', width: '220px', height: '20px' }}
+                            placeholder="Enter book title or author name..."></input>
                     </div>
                     <ul>
-                        <li><label style={{ marginLeft: '140px', color: 'white' }}>Cart</label>
+                        <li><label style={{ marginLeft: '120px', color: 'white' }}>Cart</label>
                             <Link to="/Cart" style={{ backgroundColor: 'brown', color: 'white', width: '80px', height: '50px' }} >
-                            <ion-icon name="cart-outline" ></ion-icon><span style={{ marginLeft: '7px' }}><Badge anchorOrigin={{ vertical: 'Top', horizontal: 'right' }} badgeContent={this.props.cartBookCount} showZero color="primary">
+                                <ion-icon name="cart-outline" ></ion-icon><span style={{ marginLeft: '7px' }}><Badge anchorOrigin={{ vertical: 'Top', horizontal: 'right' }} badgeContent={this.props.cartBookCount} showZero color="primary">
                                 </Badge></span></Link></li>
                         <li><Link to="/WishList" style={{ backgroundColor: 'brown', color: 'white', width: '50px' }}  >
                             <ion-icon name="list-circle-outline"></ion-icon>
@@ -43,7 +70,6 @@ class Navbar extends Component {
                     </ul>
                 </nav>
             </div>
-
         )
     }
 }
@@ -53,4 +79,6 @@ const mapStateToProps = (state) => ({
     wishListCount: state.wishListCount
 });
 
-export default connect(mapStateToProps)(Navbar);
+const ShowTheLocationWithRouter = withRouter(Navbar)
+
+export default connect(mapStateToProps)(ShowTheLocationWithRouter);
