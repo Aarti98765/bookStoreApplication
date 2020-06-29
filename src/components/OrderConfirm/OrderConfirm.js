@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
-import image from '../images/success1.png';
+import image from '../OrderConfirm/success1.png';
+import BookDataLayer from '../BookDataLayer';
+
+var data = new BookDataLayer();
 
 class OrderConfirm extends Component {
    constructor(props) {
       super(props) 
       this.state = { 
-         students: [
+            orderId: '',
+            students: [
             { id: 1, email: 'admin@bookstore.com', contact: '9565880122', address:'Malhotra Chambers, First Floor, Govandi East, Mumbai, Maharashtra 400088'},
             { id: 2, email: 'bookstore@orgadm.com', contact: '7755882200', address: 'Malhotra Chambers, First Floor, Govandi East, Mumbai, Maharashtra 400088'}
          ]
       }
+   }
+
+   componentDidMount() {
+      data.getOrderId(response => {
+          console.log("id: ", response)
+          this.setState({
+              orderId: response
+          })
+      })
    }
 
    handleClick = () => {
@@ -46,7 +59,7 @@ class OrderConfirm extends Component {
           <div style={{ textAlign:'center' }} >
           <h3 >Order Placed Successfully </h3>
           <p>hurray!!!your order is confirmed <br></br>
-             the order id is #123456 save the order id for<br></br>
+             the order id is #{this.state.orderId} save the order id for<br></br>
              futher communication.</p>
           </div>   
           <table id='students'>

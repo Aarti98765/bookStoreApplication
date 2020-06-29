@@ -1,0 +1,123 @@
+.flex-container-sort {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .select-list {
+    height: 24px;
+    margin-top: 15px;
+    margin-left: 432px;
+    width: 150px;
+    background-color: white;
+  }
+  
+  .title-book {
+    margin-left: 93px;
+  }
+  
+  .search-author-view {
+    width: 500px;
+    height: 30px;
+    border-color: brown;
+    border-radius: 20px;
+    margin-left: 200px;
+    margin-bottom: 40px;
+  }
+  
+  .all-books-view {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-left: 85px;
+  }
+  
+  .single-book-view {
+    margin: 10px;
+    height: 234px;
+    width: 160px;
+    outline-style: groove;
+    outline-color: #F8F8F8;
+    outline-width: thin;
+  }
+  
+  .image-outer-view {
+    height: 110px;
+    width: 160px;
+    outline-style: groove;
+    outline-color: #F5F5F5;
+    outline-width: 0.1px;
+    background-color: #F5F5F5; 
+  }
+  
+  .image-view {
+    width: 65px;
+    height: 88px;
+    margin-left: 45px ;
+    margin-top: 11px;
+  }
+  
+  .book-name-view {
+    text-overflow: ellipsis;
+    overflow : hidden;
+    white-space: nowrap;
+    width: 145px;
+    font-size: 12px;
+    display: inline-block;
+  }
+  
+  .book-name-view:hover {
+    text-overflow: clip;
+    white-space: normal;
+    word-break: break-all;
+  }
+  
+  .book-author-view {
+    opacity: 0.5;
+    font-size: 10px;
+  }
+  
+  .book-price-view {
+    margin-left: 2px;
+    font-size: 11px;
+  }
+  
+  .addToCart {
+    margin-top: 9px;
+    background-color: #A52A2A ;
+    font-size: 9px;
+    color: white;
+    width: 73px;
+    height: 25px;
+    margin-left: 11px;
+    margin-bottom: 15px;
+    font-weight: bold;
+  }
+  
+  .addToWishList {
+    margin-top: 7px;
+    font-size: 9px;
+    width: 60px;
+    height: 25px;
+    margin-left: 10px;
+    font-weight: bold;
+  }
+  
+  .onBookHover:hover .bookDescription{
+    display: block;
+    position: absolute;
+    height: 232px;
+    width: 178px;
+    margin-left: 162px;
+    margin-top: -232px;
+    background-color: white;
+    outline-style: groove;
+    outline-width: 0.1px;
+    outline-color: grey;
+    font-size: 8px;
+  }
+  
+  .bookDescription {
+    position: absolute;
+    display: none;
+  }
+  

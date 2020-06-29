@@ -1,20 +1,20 @@
 import React, { Component } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-import Home from './components/Home';
+import Home from './components/Home/Home';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import SearchBooks from './components/SearchBooks';
-import Cart from './components/Cart';
-import { BrowserRouter, Route, Switch, withRouter } from 'react-router-dom';
-import WishList from './components/WishList';
-import OrderConfirm from './components/OrderConfirm';
-import SignUpForm from './pages/SignUpForm';
-import SignInForm from './pages/SignInForm';
-import ResetPassword from './components/ResetPassword';
-import ForgotPassword from './components/ForgotPassword';
+import SearchBooks from './components/Home/SearchBooks';
+import Cart from './components/CartAndWishList/Cart';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import WishList from './components/CartAndWishList/WishList';
+import OrderConfirm from './components/OrderConfirm/OrderConfirm';
+import SignUpForm from './SignInSignUpForm/SignUpForm';
+import SignInForm from './SignInSignUpForm/SignInForm';
+import ResetPassword from './components/ResetPassword/ResetPassword';
+import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import BookDataLayer from './components/BookDataLayer';
-
+import Footer from './components/Footer/Footer';
 
 const initialState = {
   cartCount: 0,
@@ -49,7 +49,8 @@ class App extends Component {
     this.state = {
       cartBookCount: "",
       wishBookCount: "",
-      books: []
+      books: [],
+      wishBook: []
     }
   }
 
@@ -65,6 +66,7 @@ class App extends Component {
         wishBookCount: response.length
       })
     });
+
   }
 
   setSearch = (searchbook) => {
@@ -79,7 +81,7 @@ class App extends Component {
     return (
       <Provider store={store} >
         <div className="App">
-          <BrowserRouter>
+        <BrowserRouter>
             <Navbar cartBookCount={this.state.cartBookCount} wishBookCount={this.state.wishBookCount} function={this.setSearch}/>
             <Switch>
               <Route exact path="/" component={Home} />
@@ -88,11 +90,12 @@ class App extends Component {
               <Route path="/SignUpForm" component={SignUpForm} />
               <Route path="/ForgotPassword" component={ForgotPassword} />
               <Route path="/Cart" component={Cart} />
-              <Route path="/ResetPassword/*" component={ResetPassword} />
+              <Route path="/resetpassword/*" component={ResetPassword} />
               <Route path="/OrderConfirm" component={OrderConfirm} />
               <Route path="/WishList" component={WishList} />
             </Switch>
           </BrowserRouter>
+          <Footer/>
         </div>
       </Provider>
     )

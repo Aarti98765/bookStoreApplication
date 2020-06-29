@@ -1,54 +1,26 @@
 import React, { Component } from "react";
-import OrderSummaryView from './OrderSummaryView';
-
-const initialState = {
-  name: '',
-  pincode: '',
-  locality: '',
-  address: '',
-  city: '',
-  landmark: '',
-  addressType: '',
-  home: false,
-  work: false,
-  other: false,
-  nameError: '',
-  phoneNumberError: '',
-  pinCodeError: '',
-  showHideEdit: false,
-  view: false
-}
 
 class CustomerDetailsForm extends Component {
   constructor() {
     super();
-    this.state = initialState
+    this.state = {
+      name: '',
+      pincode: '',
+      locality: '',
+      address: '',
+      city: '',
+      landmark: '',
+      addressType: '',
+      home: false,
+      work: false,
+      other: false
+    }
   }
 
-  validate = () => {
-    let nameError = "";
-    let phoneNumberError = "";
-    let pinCodeError = "";
-
-    if (!this.state.name) {
-      nameError = "name can not be blank"
-    }
-
-    if (nameError) {
-      this.setState({ nameError });
-      return false;
-    }
-
-    return true;
-  }
-
-
-  handleSetName = async(e) => {
+  handleSetName = async (e) => {
     await this.setState({
       name: e.target.value
     })
-
-    this.props.function(this.state.name)
   }
 
   handleSetPincode = (e) => {
@@ -95,7 +67,6 @@ class CustomerDetailsForm extends Component {
       home: false,
       other: false
     })
-    console.log("work", this.state.work);
   }
 
   handleSelectOther = async () => {
@@ -104,15 +75,14 @@ class CustomerDetailsForm extends Component {
       home: false,
       other: true
     })
-    console.log("other", this.state.other);
   }
 
   render() {
     return (
       <div>
-        <form>
+        <form onSubmit={this.validate}>
           <span></span>
-          <input className="style-name-text" placeholder="   Name" onChange={(e) => this.handleSetName(e)}/>
+          <input className="style-name-text" placeholder="   Name" onChange={(e) => this.handleSetName(e)} />
           <input className="style-number-text" placeholder="    Pincode " onChange={(e) => this.handleSetPincode(e)} />
           <div>
             <div>
@@ -122,7 +92,7 @@ class CustomerDetailsForm extends Component {
             </div>
             <span> </span>
             <input className="style-pincode-text" placeholder="   Gender" />
-            <input className="style-number-text" placeholder="    Locality" onChange={(e) => this.handleSetLocality(e)}/>
+            <input className="style-number-text" placeholder="    Locality" onChange={(e) => this.handleSetLocality(e)} />
           </div>
 
           <div>
@@ -138,8 +108,8 @@ class CustomerDetailsForm extends Component {
           <div style={{ color: 'red', fontSize: '12px', marginLeft: '75px' }}>{this.state.pinCodeError}</div>
           <div>
             <span> </span>
-            <input className="style-pincode-text" placeholder="    City/Town" onChange={(e) => this.handleSetCity(e)}/>
-            <input className="style-number-text" placeholder="    Landmark" onChange={(e) => this.handleSetLandmark(e)}/>
+            <input className="style-pincode-text" placeholder="    City/Town" onChange={(e) => this.handleSetCity(e)} />
+            <input className="style-number-text" placeholder="    Landmark" onChange={(e) => this.handleSetLandmark(e)} />
           </div>
           <div>
             <span></span>
@@ -159,6 +129,7 @@ class CustomerDetailsForm extends Component {
             <label>
               <input type="radio" value="Other" onChange={this.handleSelectOther} /> Other
             </label>
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>

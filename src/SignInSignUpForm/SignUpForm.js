@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import image from '../images/new.jpg';
+import image from '../Image/new.jpg';
 import BookDataLayer from '../components/BookDataLayer';
 import { Link } from 'react-router-dom';
+import './SignInSignUpForm.css';
 
 var data = new BookDataLayer();
 
@@ -96,8 +97,8 @@ class SignUpForm extends Component {
           <div className="FormCenter">
             <div className="FormFields">
               <div className="FormField">
-                <label className="FormField__Label">Name</label>
-                <input type="text" id="name" className="FormField__Input" placeholder="Enter your name" onChange={(e) => this.handleSetName(e)} />
+                <label className="FormField__Label">User Name</label>
+                <input type="text" id="name" className="FormField__Input" placeholder="Enter your user name" onChange={(e) => this.handleSetName(e)} />
               </div>
               <div className="FormField">
                 <label className="FormField__Label">Password</label>
@@ -116,11 +117,6 @@ class SignUpForm extends Component {
               <input className="FormField_Checkbox_Admin" type="checkbox" value="Admin" onChange={this.handleSelectRoleAdmin}/><label style={{color:'brown'}}>Admin</label>
               <input className="FormField_Checkbox_User" type="checkbox" value="User" onChange={this.handleSelectRoleUser}/><label style={{color:'brown'}}>User</label>
               </div>
-              <div className="FormField">
-                <label className="FormField__CheckboxLabel">
-                  <input className="FormField__Checkbox" type="checkbox" name="hasAgreed" value={this.state.hasAgreed} onChange={this.handleChange} /> I agree all statements in <a href="" className="FormField__TermsLink">terms of service</a>
-                </label>
-                </div>
               <div className="FormField">
                 <Link to="/SignInForm">
                 <button className="FormField__Button mr-20" onClick={this.handleSubmitSignUpForm}>Sign Up</button></Link> 

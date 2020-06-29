@@ -1,0 +1,28 @@
+.pagination {
+    flex-direction: row;
+    display: flex;
+  }
+  
+  .page-button-view {
+    color:brown;
+    background-color: #F8F8F8; 
+    margin-left: 28.50px;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-right: 23px;
+    border-left: white;
+    border-right: white;
+    border-top: white;
+    border-bottom: white;
+  }
+  
+  .page-button-view1 {
+    color:brown;
+    background-color: #F8F8F8;
+    margin-top: 30px;
+    margin-bottom: 50px;
+    margin-right: 3px;
+    
+  }
+  
+  

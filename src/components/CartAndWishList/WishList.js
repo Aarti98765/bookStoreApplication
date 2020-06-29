@@ -1,5 +1,5 @@
 import React, { Fragment, Component } from 'react';
-import BookDataLayer from './BookDataLayer';
+import BookDataLayer from '../BookDataLayer';
 import { connect } from 'react-redux';
 
 var data = new BookDataLayer();
@@ -14,8 +14,8 @@ class WishList extends Component {
         }
     }
 
-    async componentDidMount() {
-        await data.fetchAllWishlistBook(response => {
+    componentDidMount() {
+        data.fetchAllWishlistBook(response => {
             console.log(response)
             this.setState({
                 booksInWishList: response
@@ -25,7 +25,7 @@ class WishList extends Component {
     }
 
     handleRemovebooks = async (e) => {
-        await data.removeFromWishList(101, e)
+        await data.removeFromWishList(e)
         console.log("aarti", e);
         window.location.reload(false);
         await data.fetchAllWishlistBook(response => {
@@ -59,11 +59,11 @@ class WishList extends Component {
         let { booksInWishList } = this.state
     
         return (
-            this.state.counter === booksInWishList.length ? <h2 style={{ marginLeft: '300px', marginTop: '100px' }}>"Oops!  You'r wishlist is empty."</h2> :
+           this.state.counter === booksInWishList.length ? <h2 style={{ marginLeft: '300px', marginTop: '100px' }}>"Oops!  You'r wishlist is empty."</h2> :
                 <div>
                     { booksInWishList.map((books) => (
                         <Fragment>
-                            <div className="flex-container-column" key={books.id} >
+                            <div className="flex-container-column" >
                                 <div style={{ border: '1px solid red', marginLeft: '130px', marginRight: '130px', marginTop: '10px' }}>
                                     <div>
                                         <h4 className="heading_style"> My WishList</h4>

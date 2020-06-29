@@ -1,6 +1,7 @@
 import React from 'react'
-import BookDataLayer from './BookDataLayer';
-import Pagination from '../components/Pagination';
+import BookDataLayer from '../BookDataLayer';
+import Pagination from '../Pagination/Pagination';
+import '../Home/Home.css';
 
 var data = new BookDataLayer();
 

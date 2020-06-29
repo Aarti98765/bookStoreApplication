@@ -1,0 +1,14 @@
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #9A081A;
+    color: white;
+    height: 50px;
+    font-family: fontawesome;
+    bottom: 0;
+    size: inherit;
+    margin-top: 5px;
+
+  }
+  

@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import image from '../images/new.jpg';
+import image from '../Image/new.jpg';
 import { Link } from 'react-router-dom';
 import BookDataLayer from '../components/BookDataLayer';
+import './SignInSignUpForm.css';
 
 var data = new BookDataLayer();
 
@@ -37,12 +38,8 @@ class SignInForm extends Component {
     this.props.history.push('/ResetPassword')
   }
 
-  handleSignUpPage = () => {
+  handleSignUpView = () => {
     this.props.history.push('/SignUpForm')
-  }
-
-  handleForgotPasswordPage = () => {
-    this.props.history.push('/ForgotPassword')
   }
 
   render() {
@@ -58,8 +55,8 @@ class SignInForm extends Component {
             <div className="FormCenter">
               <div className="FormFields">
                 <div className="FormField">
-                  <label className="FormField__Label">Name</label>
-                  <input type="username" id="username" className="FormField__Input" placeholder="Enter your name" onChange={(e) => this.handleSetUserName(e)} />
+                  <label className="FormField__Label">User Name</label>
+                  <input type="username" id="username" className="FormField__Input" placeholder="Enter your user name" onChange={(e) => this.handleSetUserName(e)} />
                 </div>
                 <div className="FormField">
                   <label className="FormField__Label">Password</label>
@@ -69,7 +66,7 @@ class SignInForm extends Component {
                   <Link to="/">
                   <button className="FormField__Button mr-20" onClick={this.handleSignInOfUser}>Sign In</button> 
                   </Link>
-                  <button className="FormField_Create_account" onClick={this.handleSignUpPage}>Create an account</button>
+                  <button className="FormField_Create_account" onClick={this.handleSignUpView}>Create an account</button>
                 </div>
                 <Link to="/ForgotPassword" className="FormField__Link">Forget Password</Link>
               </div>

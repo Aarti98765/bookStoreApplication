@@ -1,6 +1,7 @@
 import React, { Fragment, Component } from 'react';
-import BookDataLayer from './BookDataLayer';
+import BookDataLayer from '../BookDataLayer';
 import { connect } from 'react-redux';
+import './CartAndWishList.css';
 
 var data = new BookDataLayer();
 

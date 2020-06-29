@@ -1,0 +1,56 @@
+.style-number-text {
+    margin-left: 10px;
+    width: 200px;
+    height: 30px;
+    margin-right: 0px;
+  }
+  
+  .style-address-text {
+    margin-right: 13px;
+    margin-left: 61px;
+    margin-top: 5px;
+    width: 422px;
+    height: 50px;
+  }
+  
+  .style-pincode-text {
+    margin-left: 61px;
+    margin-top: 5px;
+    width: 200px;
+    height: 30px;
+  }
+  
+  .style-type-text {
+    margin-bottom: 10px;
+  }
+  
+  .style-name-text {
+    height: 30px;
+    width: 200px;
+    margin-left: 61px;
+  }
+  
+  .radio {
+    margin-top: 5px;
+  }
+  
+  .cart ion-icon {
+    vertical-align: bottom;
+    font-size: 20px;
+    padding-left: 10px;
+    margin-top: 30px;
+  }
+  
+  nav li {
+    list-style: none;
+    display: inline-block;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-top: 5px;
+  }
+  
+  li a {
+    padding: 5px;
+    text-decoration: none;
+    margin-left: 10px;
+  }

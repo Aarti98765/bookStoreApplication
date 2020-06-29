@@ -1,5 +1,5 @@
 import React, {Component } from 'react';
-import BookDataLayer from './BookDataLayer';
+import BookDataLayer from '../BookDataLayer';
 
 var data = new BookDataLayer();
 
