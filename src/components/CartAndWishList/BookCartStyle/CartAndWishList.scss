@@ -1,0 +1,324 @@
+@import "./BookCartVeriablesAndFunctions";
+
+.outer_view_cart_text {
+  background-color: $primaryButtonColorBlue;
+  @include setMarginToAllCartContent(160px, 20px);
+  margin-top: 10px;
+  width: 560px;
+  margin-bottom: 15px;
+  height: 50px;
+}
+
+.book-cart-text-style {
+  margin-left: 67px;
+  color:$setColorWhite;
+  padding-top: 15px;
+}
+
+.cart-content-outer-view {
+  margin-top: 0px;
+  width: 634px;
+  @include setMarginToAllCartContent(130px, 130px);
+  border-top: $setColorWhite;
+}
+
+.inner-cart-view {
+  border-top: $setColorWhite;
+  border-left: $setBorderColor;
+  border-right: $setBorderColor;
+  @include setMarginToAllCartContent(130px, 130px);
+  margin-top: 0px;
+  width: 634px;
+ }
+  
+.flex-container-column {
+  @extend .setFlexDirectionColumn;
+}
+
+.flex-container-row {
+  @extend .setFlexDirectionRow;
+}
+
+.flex-container-row-quantity-view{
+  @extend .setFlexDirectionRow;
+}
+
+.placeorder-button-view {
+  border: $setBorderColor;
+  height: 40px; 
+  @include setMarginToAllCartContent(159px, 69px);
+  margin-top: 0px;
+  width: 555px;
+}
+
+.image_style {
+    margin-top: 5px;
+    margin-left: 35px;
+    width: 70px;
+    height: 100px;
+}
+  
+.heading-style-book-name {
+    margin-left: 31px;
+    margin-top: 5px;
+    font-size: 15px;
+}
+  
+.heading-style-book-author {
+    margin-top: 0px;
+    @include setMarginToAllCartContent(100px, 32px);
+}
+  
+.heading-style-book-price {
+    margin-top: 0px;
+    @include setMarginToAllCartContent(100px, 32px);
+    font-size: 15px;
+}
+  
+.btn-style-remove {
+    margin-left: $setMarginLeftBookCartView;
+    background-color:$primaryButtonColorBlue;
+    border: $setColorWhite;
+    color: $setColorWhite;
+    margin-bottom: 10px;
+}
+
+.book-cart-bottom-line-view {
+    border-bottom: $setBorderColor;
+    @include setMarginToAllCartContent(56px, 69px);
+    margin-bottom: 20px;
+}
+  
+.heading-style-wishlist-text {
+  margin-left: 23px;
+}
+
+.btn-remove-wishlist {
+    margin-left: 370px;
+    background-color: brown;
+    border: $setColorWhite;
+    color: $setColorWhite;
+    height: 25px;
+    margin-bottom: 10px;
+}
+  
+.btn-wishlist-to-cart{
+    margin-left: 10px;
+    background-color: brown;
+    border: $setColorWhite;
+    color: $setColorWhite;
+    height: 25px;
+    margin-bottom: 10px;
+}
+  
+.btn-style-quantity-decrement {
+    margin-left: 130px;
+    @include quantityCountButtonView($setColorWhite, $setColorWhite, $setColorBlack);
+}
+  
+.btn-style-quantity-count {
+    @include quantityCountButtonView($setColorWhite, $primaryButtonColorBlue, $setColorWhite);
+}
+  
+.btn-style-quantity-increment {
+    @include quantityCountButtonView($setColorWhite, $setColorWhite, $setColorBlack);
+}
+  
+.btn-style-placeorder {
+    margin-left: 420px;
+    background-color: $primaryButtonColorBlue;
+    border: $setColorWhite;
+    color: $setColorWhite;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    height: 23px;
+    width: 120px;
+}
+
+.customer-details-view {
+    border: $setBorderColor;
+    @include setMarginToAllCartContent(159px, 69px);
+    margin-top: 10px;
+    width: 555px;
+}
+
+.btn-style-custom {
+  margin-top: 15px;
+  margin-bottom: 12px;
+  margin-left: 34px;
+  background-color: $setColorWhite;
+  border: $setColorWhite;
+  width: 150px;
+}
+  
+.button-summary-style {
+  margin-top: 15px;
+  margin-bottom: 12px;
+  margin-left: 50px;
+  background-color: $setColorWhite;
+  border: $setColorWhite;
+  width: 110px;
+}
+
+.order-summary-outer-div-style{
+  border: $setBorderColor;
+  @include setMarginToAllCartContent(159px, 69px);
+  margin-top: 10px;
+  width: 555px;
+}
+
+.order-summary-div-style{
+  border: $setColorWhite;
+  @include setMarginToAllCartContent(10px, 30px);
+  margin-top: 10px;
+  width: 634px;
+}
+
+.button-checkout-style{
+    background-color: $primaryButtonColorBlue;
+    color: $setColorWhite;
+    border: $setColorWhite;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 480px;
+    height: 30px;
+    width: 100px;
+}
+
+.order-summary-inner-div-style{
+    border-top: 1px solid red;
+    width: 100%
+}
+ 
+.order-confirm-div-style{
+    border-top: 1px solid red;
+    width: 100%;
+}
+
+.wishlist-outer-view {
+    border: $setBorderColor;
+    @include setMarginToAllCartContent(130px, 130px);
+    margin-top: 10px;
+    width: 634px;
+}
+
+.order-summary-view {
+    border-left: $setColorWhite;
+    border-right: $setColorWhite;
+    @include setMarginToAllCartContent(0px, 180px);
+    border-top: $setColorWhite;;
+    margin-top: 0px;
+}
+
+.btn-style-checkout {
+  margin-left: 420px;
+  background-color: $primaryButtonColorBlue;
+  border: $setColorWhite;
+  color: $setColorWhite;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  height: 23px;
+  width: 120px;
+}
+
+/*-----------------Mobile View-------------------*/
+
+@media (max-width: 768px) {
+  .outer_view_cart_text{
+    width: 200px;
+    height: 45px;
+    margin-left: $setMarginLeftBookCartView;
+  }
+
+  .book-cart-text-style {
+    margin-left: 40px;
+  }
+
+  .cart-content-outer-view {
+    margin-left: $setMarginLeftBookCartView;
+    width: 450px;
+    margin-right: 0px;
+  }
+
+  .flex-container-row {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .image_style {
+    margin-left: $setMarginLeftBookCartView;
+  }
+  
+  .heading-style-book-name {
+    margin-left: $setMarginLeftBookCartView;
+  }
+  
+  .heading-style-book-author {
+    margin-left: $setMarginLeftBookCartView;
+  }
+  
+  .heading-style-book-price{
+    margin-left: $setMarginLeftBookCartView;
+  }
+
+  .btn-style-quantity-decrement {
+    margin-left: $setMarginLeftBookCartView;
+  }
+  
+  .btn-style-remove {
+    margin-left: $setMarginLeftBookCartView;
+  }
+
+  .book-cart-bottom-line-view {
+    margin-left: 5px;
+    width: 190px;
+  }
+
+  .customer-details-view {
+    margin-left: $setMarginLeftBookCartView;
+    width: 200px;
+  }
+
+  .placeorder-button-view {
+    margin-left: $setMarginLeftBookCartView;
+    width: 200px;
+  }
+
+  .btn-style-placeorder {
+    margin-left: 70px;
+    width: 120px;
+  }
+
+  .order-summary-outer-div-style{
+    margin-left: $setMarginLeftBookCartView;
+    width: 200px;
+  }
+
+  .button-summary-style {
+    margin-left: 10px;
+  }
+
+  .btn-style-custom {
+    margin-left: 0px;
+    width: 140px;
+  }
+
+  .btn-style-checkout {
+    margin-left: 190px;
+    width: 100px;
+  }
+
+  .wishlist-outer-view {
+    @include setMarginToAllCartContent(15px, 5px);
+    width: 200px;
+  }
+
+  .heading-style-wishlist-text {
+    margin-left: 19px;
+    width: 100px;
+  }
+
+  .btn-remove-wishlist {
+    margin-left: 22px;
+  }
+}  

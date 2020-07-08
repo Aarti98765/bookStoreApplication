@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import './App.css';
+import './App.scss';
 import Navbar from './components/Navbar';
 import Home from './components/Home/Home';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import SearchBooks from './components/Home/SearchBooks';
-import Cart from './components/CartAndWishList/Cart';
+import Cart from './components/CartAndWishList/BookCart';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import WishList from './components/CartAndWishList/WishList';
+import WishList from './components/CartAndWishList/BookWishList';
 import OrderConfirm from './components/OrderConfirm/OrderConfirm';
 import SignUpForm from './SignInSignUpForm/SignUpForm';
 import SignInForm from './SignInSignUpForm/SignInForm';
@@ -15,6 +15,7 @@ import ResetPassword from './components/ResetPassword/ResetPassword';
 import ForgotPassword from './components/ForgotPassword/ForgotPassword';
 import BookDataLayer from './components/BookDataLayer';
 import Footer from './components/Footer/Footer';
+import Admin from './SignInSignUpForm/Admin';
 
 const initialState = {
   cartCount: 0,
@@ -74,7 +75,6 @@ class App extends Component {
     this.setState({
       books: searchbook
     })
-    console.log('array val', this.state.books)
   }
 
   render() {
@@ -93,6 +93,7 @@ class App extends Component {
               <Route path="/resetpassword/*" component={ResetPassword} />
               <Route path="/OrderConfirm" component={OrderConfirm} />
               <Route path="/WishList" component={WishList} />
+              <Route path="/Admin" component={Admin}/>
             </Switch>
           </BrowserRouter>
           <Footer/>

@@ -15,23 +15,9 @@ class Home extends React.Component {
             value: 'Sort by relevance',
             cardHover: false
         }
-        this.setIsShown = this.setIsShown.bind(this);
-        this.setIsHide = this.setIsHide.bind(this);
         this.onChangePage = this.onChangePage.bind(this);
     }
-
-    setIsShown(event) {
-        this.setState({
-            isShown: true
-        });
-    }
-
-    setIsHide(event) {
-        this.setState({
-            isShown: false
-        });
-    }
-
+    
     async componentDidMount() {
         await data.fetchAllBook(response => {
             this.setState({
@@ -85,7 +71,6 @@ class Home extends React.Component {
 
     render() {
         let { books } = this.state
-        console.log(books.description)
         return (
             <div style={{ flexDirection: 'row', marginTop: '30px' }}>
                 <div className="flex-container-sort">
@@ -98,24 +83,24 @@ class Home extends React.Component {
                     </select>
                 </div>
                 <div className="all-books-view" >
-                    { this.state.pageOfItems.map(book => (  
-                            <div className="onBookHover" key={book.id} style={{ margin:'10px', outlineWidth:'thin', outlineColor:'#F8F8F8', outlineStyle:'groove', width:'160px', height:'234px'}}>
-                                <div className="image-outer-view" >
-                                    <img className="image-view" src={book.picPath} alt="" />
-                                </div>
-                                <br></br>
-                                <div style={{ marginLeft: '10px' }}>
-                                    <text className="book-name-view" >{book.nameOfBook}</text><br></br>
-                                    <text className="book-author-view" >{book.author}</text><br></br>
-                                    <text className="book-price-view" >Rs. {book.price}</text><br></br>
-                                </div>
-                                <button className="addToCart" onClick={() => this.handleClickAddToCart(book.id)}>ADD TO BAG</button>
-                                <button className="addToWishList" onClick={() => this.handleClickAddToWishList(book.id)} >WISHLIST</button>
-                                <div className="bookDescription">
-                                    <p style={{padding: '13px'}}>{book.description}</p>
-                                </div>
+                    { this.state.pageOfItems.map(book => (
+                        <div className="onBookHover" key={book.id} style={{ margin: '10px', outlineWidth: 'thin', outlineColor: '#F8F8F8', outlineStyle: 'groove', width: '160px', height: '234px' }}>
+                            <div className="image-outer-view" >
+                                <img className="image-view" src={book.picPath} alt="" />
                             </div>
-                        ))}
+                            <br></br>
+                            <div style={{ marginLeft: '10px' }}>
+                                <text className="book-name-view" >{book.nameOfBook}</text><br></br>
+                                <text className="book-author-view" >{book.author}</text><br></br>
+                                <text className="book-price-view" >Rs. {book.price}</text><br></br>
+                            </div>
+                            <button className="addToCart" onClick={() => this.handleClickAddToCart(book.id)}>ADD TO BAG</button>
+                            <button className="addToWishList" onClick={() => this.handleClickAddToWishList(book.id)} >WISHLIST</button>
+                            <div className="bookDescription">
+                                <p style={{ padding: '13px' }}>{book.description}</p>
+                            </div>
+                        </div>
+                    ))}
                 </div>
                 <div>
                     <Pagination items={this.state.books} onChangePage={this.onChangePage} />

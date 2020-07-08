@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import image from '../Image/new.jpg';
+import image from '../Image/BackgroundImage.jpg';
 import { Link } from 'react-router-dom';
 import BookDataLayer from '../components/BookDataLayer';
 import './SignInSignUpForm.css';

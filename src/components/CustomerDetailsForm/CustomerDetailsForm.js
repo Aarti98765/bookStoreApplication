@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import '../CustomerDetailsForm/CustomerDetailsForm.css';
 
 class CustomerDetailsForm extends Component {
   constructor() {
@@ -59,6 +60,8 @@ class CustomerDetailsForm extends Component {
       home: true,
       other: false
     })
+    this.props.function(this.state.name, this.state.pincode, this.state.locality, this.state.address, this.state.city, this.state.landmark,
+      this.state.home, this.state.work, this.state.other);
   }
 
   handleSelectWork = async () => {
@@ -80,36 +83,24 @@ class CustomerDetailsForm extends Component {
   render() {
     return (
       <div>
-        <form onSubmit={this.validate}>
+        <form>
           <span></span>
-          <input className="style-name-text" placeholder="   Name" onChange={(e) => this.handleSetName(e)} />
-          <input className="style-number-text" placeholder="    Pincode " onChange={(e) => this.handleSetPincode(e)} />
+          <input className="style-name-text" placeholder="             Name" required pattern="(/^[a-zA-Z]{3,}$/)" onChange={(e) => this.handleSetName(e)} />
+          <input className="style-number-text" placeholder="           Pincode" required pattern="^[1-9][0-9]{6}$" onChange={(e) => this.handleSetPincode(e)} />
           <div>
-            <div>
-              <span></span>
-              <div style={{ color: 'red', marginLeft: '75px', fontSize: '12px' }}>{this.state.nameError}</div>
-              <div style={{ color: 'red', marginLeft: '142px', fontSize: '12px' }}>{this.state.phoneNumberError}</div>
-            </div>
             <span> </span>
             <input className="style-pincode-text" placeholder="   Gender" />
             <input className="style-number-text" placeholder="    Locality" onChange={(e) => this.handleSetLocality(e)} />
           </div>
-
           <div>
-            <span></span>
-            <div style={{ color: 'red', marginLeft: '75px', fontSize: '12px' }}>{this.state.pinCodeError}</div>
-            <div style={{ color: 'red', marginLeft: '175px', fontSize: '12px' }}>{this.state.pinCodeError}</div>
-          </div>
-
-          <div>
-            <textarea className="style-address-text" placeholder="  Address" />
+            <textarea className="style-address-text" required pattern="(/^[a-zA-Z0-9.,-:() ]{5,}$/))" placeholder="  Address" />
           </div>
 
           <div style={{ color: 'red', fontSize: '12px', marginLeft: '75px' }}>{this.state.pinCodeError}</div>
           <div>
             <span> </span>
             <input className="style-pincode-text" placeholder="    City/Town" onChange={(e) => this.handleSetCity(e)} />
-            <input className="style-number-text" placeholder="    Landmark" onChange={(e) => this.handleSetLandmark(e)} />
+            <input className="style-number-text" placeholder="    Landmark" required pattern="(/^[a-zA-Z ]{3,}$/)" onChange={(e) => this.handleSetLandmark(e)} />
           </div>
           <div>
             <span></span>
@@ -129,7 +120,6 @@ class CustomerDetailsForm extends Component {
             <label>
               <input type="radio" value="Other" onChange={this.handleSelectOther} /> Other
             </label>
-            <button type="submit">Submit</button>
           </div>
         </form>
       </div>

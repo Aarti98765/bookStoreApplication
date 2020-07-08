@@ -1,4 +1,4 @@
-.flex-container-sort {
+  .flex-container-sort {
     display: flex;
     flex-direction: row;
   }
@@ -121,3 +121,25 @@
     display: none;
   }
   
+  /*----------------------Mobile View------------------------------*/
+
+  @media (max-width: 768px) {
+    .title-book {
+      margin-left: 44px;
+    }
+
+    .select-list {
+      height: 27px;
+      margin-left: 45px;
+      width: 159px;
+    }
+
+    .all-books-view {
+      flex-direction: column;
+      margin-left: 35px;
+    }
+
+    .flex-container-sort {
+      flex-direction: column;
+    }
+  }

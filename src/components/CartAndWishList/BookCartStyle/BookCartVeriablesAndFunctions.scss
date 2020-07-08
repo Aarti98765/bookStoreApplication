@@ -1,0 +1,27 @@
+$primaryButtonColorBlue: blue;
+$setColorWhite: white;
+$setColorBlack: black;
+$setBorderColor: 1px solid rgb(56, 54, 54);
+$setMarginLeftBookCartView: 20px;
+
+.setFlexDirectionRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.setFlexDirectionColumn {
+    display: flex;
+    flex-direction: column;
+}
+
+@mixin quantityCountButtonView($borderColor, $backgroundColor, $textColor) {
+    border: $borderColor;
+    background-color: $backgroundColor;
+    color: $textColor;
+    margin-bottom: 10px;
+}
+
+@mixin setMarginToAllCartContent($marginLeft, $marginRight) {
+    margin-left: $marginLeft;
+    margin-right: $marginRight;
+}

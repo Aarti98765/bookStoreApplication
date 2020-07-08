@@ -1,10 +1,12 @@
 import React, { Fragment, Component } from 'react';
 import BookDataLayer from '../BookDataLayer';
 import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
+import './BookCartStyle/CartAndWishList.scss';
 
 var data = new BookDataLayer();
 
-class WishList extends Component {
+class BookWishList extends Component {
     constructor() {
         super()
         this.state = {
@@ -26,7 +28,6 @@ class WishList extends Component {
 
     handleRemovebooks = async (e) => {
         await data.removeFromWishList(e)
-        console.log("aarti", e);
         window.location.reload(false);
         await data.fetchAllWishlistBook(response => {
             this.setState({
@@ -57,16 +58,16 @@ class WishList extends Component {
 
     render() {
         let { booksInWishList } = this.state
-    
         return (
-           this.state.counter === booksInWishList.length ? <h2 style={{ marginLeft: '300px', marginTop: '100px' }}>"Oops!  You'r wishlist is empty."</h2> :
+            localStorage.getItem("token") != null && localStorage.getItem("token") !== "undefined" ?
+            this.state.counter === booksInWishList.length ? <h2 style={{ marginLeft: '300px', marginTop: '100px' }}>"Oops!  You'r wishlist is empty."</h2> :
                 <div>
                     { booksInWishList.map((books) => (
                         <Fragment>
                             <div className="flex-container-column" >
-                                <div style={{ border: '1px solid red', marginLeft: '130px', marginRight: '130px', marginTop: '10px' }}>
+                                <div className="wishlist-outer-view">
                                     <div>
-                                        <h4 className="heading_style"> My WishList</h4>
+                                        <h4 className="heading-style-wishlist-text"> My WishList</h4>
                                     </div>
                                     <div className="flex-container-row">
                                         <div><img src={books.picPath} alt="" className="image_style" /></div>
@@ -87,6 +88,7 @@ class WishList extends Component {
                     )
                     )}
                 </div>
+                :  <Redirect to='/SignInForm' onClick={sessionStorage.setItem("isFrom", "WishList")} />
         )
     }
 }
@@ -95,4 +97,4 @@ const mapStateToProps = (state) => ({
     wishListCount: state.wishListCount
 });
 
-export default connect(mapStateToProps) (WishList)
+export default connect(mapStateToProps)(BookWishList)

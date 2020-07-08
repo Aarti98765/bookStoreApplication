@@ -220,7 +220,7 @@ class BookDataLayer {
             body: (password)
         })
             .then(res => res.text()
-                .then(res => console.log("message", res)
+            .then(res => console.log("message", res)
                 ))
     }
 }

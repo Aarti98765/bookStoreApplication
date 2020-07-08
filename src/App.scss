@@ -1,0 +1,171 @@
+@import './components/CartAndWishList/BookCartStyle/BookCartVeriablesAndFunctions.scss';
+
+.App {
+  text-align: start;
+
+  body {
+    background-color: $setColorWhite;
+  }
+  
+  .center {
+      display: flex;
+      justify-content: center;
+  }
+  
+  .hide {
+      display: none;
+  }
+
+  .book-menu {
+    background-color: #a52a2a;
+    width: 817px; 
+    height: 63px;
+    display: flex;
+    padding: 0 40px;
+    position: relative;
+ 
+    .icon_cart {
+      width : 30px;
+      height: 25px;
+    }
+   
+    .menu__right {
+       display: flex;
+       align-items: center;
+       height: 100%;
+    }
+   
+    .bookstore-text-div-style {
+        font-size: 13px;
+        margin-bottom: 0px;
+        color: $setColorWhite;
+        font-style: inherit;
+        margin-top: 3px;
+    }
+   
+    .font-cart {
+        font-size: 10px;
+        @include setMarginToAllCartContent(150px, 5px);
+        margin-top: 5px;
+        color: $setColorWhite;
+    }
+   
+    .menu__logo_first {
+        text-indent: -9999999px;
+        display: inline-block;
+        height: 50%;
+        width: 42px;
+        margin-top: 12px;
+        margin-left: 90px;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+   
+    .menu__cart_logo {
+        height: 70%;
+        width: 42px;
+        border: 1px solid #c8c9ce;
+        background-color: transparent;
+        outline: none;
+        cursor: pointer;
+        margin-top: 25%;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+   
+    .menu__search-form {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        padding: 10px;
+        background-color: $setColorWhite;
+    }
+   
+    .menu__search-input {
+        outline: none;
+        border: 1px solid #c8c9ce;
+        font-size: 18px;
+        padding: 5px;
+        font-weight: 300;
+    }
+
+    .button_size {
+        margin-top: 10px;
+        width: 40px;
+        height: 30px;
+    }
+   
+    .heading_style {
+        @include setMarginToAllCartContent(480px, 28px);
+        font-size: 15px;
+    }
+   
+    .border {
+        border:'1px solid red'
+    }
+   
+    .book-cart-link-style{
+        margin-top: 20px;
+        color: $setColorWhite;
+        width: 50px;
+        height: 50px;
+        margin-left: 3px;
+    }
+   
+    .book-cart-text-style{
+        margin-top: 5px;
+        color: $setColorWhite;
+        margin-left: 80px;
+    }
+   
+    .wishlist-book-link-style{
+        margin-top: 20px;
+        background-color: brown;
+        color: $setColorWhite;
+        margin-left: 3px;
+        width: 50px;
+    }  
+   
+    .wishlist-book-text-style{
+        margin-top: 20px;
+        color: $setColorWhite;
+    }
+   
+    .login-link-style{
+        margin-top: 20px;
+        color: brown;
+    }
+   
+    .login-text-style{
+        color: $setColorWhite;
+        margin-left: 8px;
+    }
+   
+    .logout-link-style{
+        color: brown;
+        margin-top: 20px;
+        margin-left: 8px;
+    }
+   
+    .logout-text-style{
+        color: $setColorWhite;
+        margin-top: 10px;
+        margin-left: 10px;
+    }
+   
+    .bookstore-text-style{
+        color: $setColorWhite;
+        margin-top: '16px';
+    }
+  } 
+}
+
+/*---------------Mobile View-------------------------*/
+
+@media (max-width: 768px) {
+  .book-menu {
+    background-color: #a52a2a;
+    height: 80px;
+    display: flex;
+  }   
+}

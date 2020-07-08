@@ -1,62 +1,40 @@
 .Main_view {
-    height: 100vh;
-    display: flex;
-    color: white;
-  }
+  height: 100vh;
+  display: flex;
+  color: white;
+  width: 900px;
+}
+
+.App__Aside {
+  width: 50%;
+} 
+
+.App_Img {
+  height: 409px;
+  width: 420px;
+  margin-left: 0%;
+  margin-top: 0%;
+  margin-bottom: 100%;
+}
+ 
+.signup-image-view {
+  height: 580px;
+  width: 420px;
+  margin-left: 0%;
+  margin-top: 0%;
+  margin-bottom: 100%;
+}
   
-  .App__Aside {
-    width: 50%;
-  }
-  
-  .App_Img {
-    height: 409px;
-    width: 420px;
-    margin-left: 0%;
-    margin-top: 0%;
-    margin-bottom: 100%;
-  }
-  .App__Form {
+.App__Form {
     width: 50%;
     outline-style: groove;
     outline-color: #F5F5F5;
     outline-width: 0.1px;
     background-color: 	#fbfcfd ;
     padding: 25px 40px;
-    overflow: auto;
+    overflow: auto; 
   }
-  
-  .PageSwitcher {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 10%;
-  }
-  
-  .PageSwitcher__Item {
-    background-color: #4C5D72;
-    color: #9DA6B1;
-    padding: 10px 25px;
-    cursor: pointer;
-    font-size: .9em;
-    border: none;
-    outline: none;
-    display: inline-block;
-    text-decoration: none;
-  }
-  
-  .PageSwitcher__Item--Active {
-    background-color: #5ED0C0;
-    color: white;
-  }
-  
-  .PageSwitcher__Item:first-child {
-    border-top-left-radius: 25px;
-    border-bottom-left-radius: 25px;
-  }
-  .PageSwitcher__Item:last-child {
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-  }
-  
+
   .FormCenter {
     margin-bottom: 100px;
   }
@@ -72,6 +50,7 @@
     font-size: 1.7em;
     margin: 0 5px;
     padding-bottom: 5px;
+    border: transparent;
   }
   
   .FormTitle__Link_SignUp {
@@ -79,6 +58,7 @@
     font-size: 1.7em;
     margin: 0 7px;
     padding-bottom: 5px;
+    border: transparent;
   }
   
   .FormField {
@@ -176,4 +156,44 @@
     position: absolute;
     display: none;
   }
-  
+
+  /*----------------Mobile View----------------------------*/
+
+  @media (max-width: 768px) {
+    .Main_view {
+      display: flex;
+      flex-direction: column;
+      width: 200px;
+    }
+    
+    .App__Aside {
+      width: 100%;
+    } 
+    
+    .App_Img {
+      height: 195px;
+      width: 215px;
+      margin-bottom: 0px;
+      padding: 5px;
+    }
+
+    .App__Form {
+      width: 100%;
+    }    
+
+    .FormField_Create_account {
+      margin-left: 0px;
+      margin-top: 10px;
+    }
+
+    .signup-image-view {
+      height: 195px;
+      width: 223px;
+      margin-bottom: 0px;
+      padding: 5px;
+    }
+
+    .FormField__Link {
+      margin-top: 20px;
+    }
+  }  

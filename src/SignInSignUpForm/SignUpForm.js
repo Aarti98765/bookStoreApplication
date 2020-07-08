@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import image from '../Image/new.jpg';
+import image from '../Image/BackgroundImage.jpg';
 import BookDataLayer from '../components/BookDataLayer';
 import { Link } from 'react-router-dom';
 import './SignInSignUpForm.css';
@@ -84,11 +84,15 @@ class SignUpForm extends Component {
     });
   }
 
+  handleSelectRoleAdmin = () => {
+    this.props.history.push('/Admin')
+  }
+
   render() {
     return (
-      <div className="Main_view">
+      <div className="Main_view"> 
         <div className="App__Aside">
-          <img src={image} alt="" className="App_Img"></img>
+          <img src={image} alt="" className="signup-image-view"></img>
         </div>
         <div className="App__Form">
           <div className="FormTitle">
@@ -114,7 +118,7 @@ class SignUpForm extends Component {
               </div>
               <div className="FormField">
               <label className="CheckboxLabel">Select Role : </label>
-              <input className="FormField_Checkbox_Admin" type="checkbox" value="Admin" onChange={this.handleSelectRoleAdmin}/><label style={{color:'brown'}}>Admin</label>
+              <input className="FormField_Checkbox_Admin" type="checkbox" value="Admin" onClick={this.handleSelectRoleAdmin}/><label style={{color:'brown'}}>Admin</label>
               <input className="FormField_Checkbox_User" type="checkbox" value="User" onChange={this.handleSelectRoleUser}/><label style={{color:'brown'}}>User</label>
               </div>
               <div className="FormField">

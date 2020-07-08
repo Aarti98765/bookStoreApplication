@@ -1,4 +1,4 @@
-.pagination {
+ .pagination {
     flex-direction: row;
     display: flex;
   }
@@ -9,7 +9,7 @@
     margin-left: 28.50px;
     margin-top: 30px;
     margin-bottom: 50px;
-    margin-right: 23px;
+    margin-right: 50px;
     border-left: white;
     border-right: white;
     border-top: white;
@@ -25,4 +25,32 @@
     
   }
   
-  
+  .pagination-style {
+    margin-left: 96px;
+  }
+
+  /*------------------------Mobile View-----------------------*/
+  @media (max-width: 768px) {
+    .pagination {
+      flex-direction: column;
+    }
+    
+    .page-button-view {
+      margin-left: 23px;
+      margin-top: 0px;
+      margin-right: 0px;
+      width: 18px;
+    }
+    
+    .page-button-view1 {
+      margin-top: 0px;
+      margin-bottom: 5px;
+      margin-right: 3px;
+      width: 68px;
+    }
+
+    .pagination-style {
+      margin-left: 90px;
+      margin-top: 15px;
+    }
+  }
